@@ -3,10 +3,7 @@ import React from 'react'
 
 export const JobCard = ({ job }: { job: Job }) => {
   return (
-    <li
-      key={job.id}
-      className="flex flex-col items-start justify-start gap-2 border border-primaryDark p-6 rounded-sm"
-    >
+    <li className="flex flex-col items-start justify-start gap-2 border border-primaryDark p-6 rounded-sm">
       <h2 className="font-bold text-2xl">{job.title}</h2>
       <p className="text-gray-500">{job.company}</p>
       <p className="text-gray-500">{job.location}</p>

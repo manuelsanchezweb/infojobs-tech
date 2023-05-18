@@ -20,5 +20,16 @@
     "technologies": ["javascript", "nodejs"],
     "remote": false,
     "url": "https://www.codigoconxavi.com"
+  },
+  {
+    "id": 3,
+    "title": "Científico de datos en Marbella con Python",
+    "description": "Buscamos un científico de datos con experiencia en Python para unirse a nuestro equipo en Marbella.",
+    "company": "Datos con Paco",
+    "location": "Marbella",
+    "stack": "data",
+    "technologies": ["python", "machine learning", "data science"],
+    "remote": false,
+    "url": "https://www.datosconpaco.com"
   }
 ]
