@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         primary: '#167db7',
         primaryDark: '#126492',
+        primaryTransparent: 'rgba(22,125,183,0.7)',
         // ...
       },
       backgroundImage: {

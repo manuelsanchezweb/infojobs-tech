@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Desarrollador Frontend en Marbella con React",
+    "description": "Buscamos un desarrollador frontend con experiencia en React para unirse a nuestro equipo en Marbella.",
+    "company": "Código con Manu",
+    "location": "Marbella",
+    "stack": "frontend",
+    "technologies": ["javascript", "css", "html"]
+  },
+  {
+    "id": 2,
+    "title": "Desarrollador Backend en Marbella con NodeJS",
+    "description": "Buscamos un desarrollador backend con experiencia en NodeJS para unirse a nuestro equipo en Marbella.",
+    "company": "Código con Xavi",
+    "location": "Marbella",
+    "stack": "backend",
+    "technologies": ["javascript", "nodejs"]
+  }
+]
