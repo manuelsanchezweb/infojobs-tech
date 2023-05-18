@@ -6,7 +6,9 @@
     "company": "Código con Manu",
     "location": "Marbella",
     "stack": "frontend",
-    "technologies": ["javascript", "css", "html"]
+    "technologies": ["javascript", "css", "html"],
+    "remote": true,
+    "url": "https://www.codigoconmanu.com"
   },
   {
     "id": 2,
@@ -15,6 +17,8 @@
     "company": "Código con Xavi",
     "location": "Marbella",
     "stack": "backend",
-    "technologies": ["javascript", "nodejs"]
+    "technologies": ["javascript", "nodejs"],
+    "remote": false,
+    "url": "https://www.codigoconxavi.com"
   }
 ]
