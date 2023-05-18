@@ -1,6 +1,6 @@
 # Infojobs Tech
 
-Una nueva forma de descubrir infojobs para desarrolladores.
+Una nueva forma de descubrir Infojobs para desarrolladores.
 
 ## 🪜 En construcción
 
