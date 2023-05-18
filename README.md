@@ -4,7 +4,7 @@ Una nueva forma de descubrir infojobs para desarrolladores.
 
 ## 🪜 En construcción
 
-No te asustes, estamos trabajando duro por [aquí](infojobs-tech.vercel.app).
+No te asustes, estamos trabajando duro por [aquí](https://infojobs-tech.vercel.app).
 
 ## 📧 Contacto
 
