@@ -6,7 +6,7 @@ export const JobsList = ({ jobs }: { jobs: Job[] }) => {
   return (
     <ul className="flex flex-col gap-8">
       {jobs.map((job) => (
-        <JobCard key={job.id} job={job} />
+        <JobCard job={job} />
       ))}
     </ul>
   )
