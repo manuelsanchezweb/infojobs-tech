@@ -7,9 +7,9 @@ export default async function Home() {
   const jobs = await getJobsData()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-12 p-4">
+    <main className="flex flex-col items-center justify-center gap-12 py-12 px-4">
       <div className="flex flex-col items-end justify-end">
-        <Logo customClass="text-primary" />
+        <Logo customClass="text-primary w-64 h-auto" />
         <small className="font-bold italic text-2xl">Tech</small>
       </div>
       <JobsList jobs={jobs} />
