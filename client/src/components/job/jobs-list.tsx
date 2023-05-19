@@ -1,15 +1,12 @@
 import { Job } from '@/types/types'
 import React from 'react'
 import { JobCard } from './job-card'
-import { getJobsData } from '@/api/getJobsData'
 
-export const JobsList = async () => {
-  const jobs = await getJobsData()
-
+export const JobsList = ({ jobs }: { jobs: Job[] }) => {
   return (
-    <ul className="flex flex-col gap-8">
-      {jobs.map((job) => (
-        <JobCard job={job} />
+    <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+      {jobs.map((job, index) => (
+        <JobCard key={index} job={job} />
       ))}
     </ul>
   )

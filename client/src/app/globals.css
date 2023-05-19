@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --max-width: 1000px;
+}
+
 @layer components {
   .btn {
     @apply flex gap-4 py-2 px-4 border border-primaryDark rounded-md shadow-sm bg-white text-black hover:bg-primaryDark hover:text-white focus:bg-primaryDark focus:text-white transition-all duration-200 ease-in-out cursor-pointer text-center justify-center;
   }
+}
+
+body {
+  width: clamp(min(75ch, 100% - 4rem), 100%, var(--max-width));
+  margin-inline: auto;
 }

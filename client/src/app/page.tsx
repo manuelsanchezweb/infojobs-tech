@@ -1,4 +1,4 @@
-import { JobsList } from '@/components/job/jobs-list'
+import { Jobs } from '@/components/job/jobs'
 import { Logo } from '@/components/logo'
 import { IconGithub } from '@/icons/github'
 
@@ -10,8 +10,7 @@ export default function Home() {
         <small className="font-bold italic text-2xl">Tech</small>
       </div>
 
-      {/* @ts-expect-error Async Server Component */}
-      <JobsList />
+      <Jobs />
 
       <a
         className="btn"

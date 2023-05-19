@@ -1,35 +1,128 @@
 [
   {
     "id": 1,
+    "id_infojobs": "123456789",
     "title": "Desarrollador Frontend en Marbella con React",
     "description": "Buscamos un desarrollador frontend con experiencia en React para unirse a nuestro equipo en Marbella.",
     "company": "Código con Manu",
     "location": "Marbella",
     "stack": "frontend",
     "technologies": ["javascript", "css", "html"],
-    "remote": true,
-    "url": "https://www.codigoconmanu.com"
+    "url": "https://www.codigoconmanu.com",
+    "min_salary": "20000",
+    "max_salary": "30000",
+    "created_at": "2021-01-01",
+    "remote": true
   },
   {
     "id": 2,
+    "id_infojobs": "123456788",
     "title": "Desarrollador Backend en Marbella con NodeJS",
     "description": "Buscamos un desarrollador backend con experiencia en NodeJS para unirse a nuestro equipo en Marbella.",
     "company": "Código con Xavi",
     "location": "Marbella",
     "stack": "backend",
     "technologies": ["javascript", "nodejs"],
-    "remote": false,
-    "url": "https://www.codigoconxavi.com"
+    "url": "https://www.codigoconxavi.com",
+    "min_salary": "20000",
+    "max_salary": "30000",
+    "created_at": "2021-01-01",
+    "remote": false
   },
   {
     "id": 3,
+    "id_infojobs": "123456787",
     "title": "Científico de datos en Marbella con Python",
     "description": "Buscamos un científico de datos con experiencia en Python para unirse a nuestro equipo en Marbella.",
     "company": "Datos con Paco",
     "location": "Marbella",
     "stack": "data",
     "technologies": ["python", "machine learning", "data science"],
-    "remote": false,
-    "url": "https://www.datosconpaco.com"
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 4,
+    "id_infojobs": "123456786",
+    "title": "Científico de datos en Benalmádena con Python",
+    "description": "Buscamos un científico de datos con experiencia en Python para unirse a nuestro equipo en Benalmádena.",
+    "company": "Datos con Paco",
+    "location": "Benalmádena",
+    "stack": "data",
+    "technologies": [
+      "python",
+      "machine learning",
+      "data science",
+      "javascript"
+    ],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 5,
+    "id_infojobs": "123456785",
+    "title": "Frontend Developer en Asturias!",
+    "description": "Buscamos un desarrollador frontend con experiencia en Vue para unirse a nuestro equipo en Asturias.",
+    "company": "META",
+    "location": "Asturias",
+    "stack": "data",
+    "technologies": ["vue", "javascript", "css", "html"],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 6,
+    "id_infojobs": "123456784",
+    "title": "Backend Developer en Asturias!",
+    "description": "Buscamos un desarrollador backend con experiencia en Vue para unirse a nuestro equipo en Asturias.",
+    "company": "META",
+    "location": "Asturias",
+    "stack": "data",
+    "technologies": ["vue", "javascript", "css", "html"],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 7,
+    "id_infojobs": "123456783",
+    "title": "Devops Developer en Granada!",
+    "description": "Buscamos un desarrollador devops con experiencia en Vue para unirse a nuestro equipo en Granada.",
+    "company": "META",
+    "location": "Granada",
+    "stack": "devops",
+    "technologies": ["ci", "cd", "docker", "kubernetes"],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 8,
+    "id_infojobs": "123456782",
+    "title": "Flutter Developer en Granada!",
+    "description": "Buscamos un desarrollador devops con experiencia.",
+    "company": "META",
+    "location": "Granada",
+    "stack": "mobile",
+    "technologies": ["flutter", "dart", "android", "ios"],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
+  },
+  {
+    "id": 9,
+    "id_infojobs": "123456781",
+    "title": "Urgente: se busca fullstack!",
+    "description": "Buscamos un desarrollador fullstack.",
+    "company": "META",
+    "location": "Madrid y alrededores",
+    "stack": "fullstack",
+    "technologies": ["wordpress", "php", "javascript", "css", "html"],
+    "url": "https://www.datosconpaco.com",
+    "created_at": "2021-01-01",
+    "remote": false
   }
 ]
