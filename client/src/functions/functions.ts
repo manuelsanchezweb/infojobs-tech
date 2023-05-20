@@ -1,19 +1,5 @@
 import { Job, Stack } from '@/types/types'
-
-const monthNames = [
-  'enero',
-  'febrero',
-  'marzo',
-  'abril',
-  'mayo',
-  'junio',
-  'julio',
-  'agosto',
-  'septiembre',
-  'octubre',
-  'noviembre',
-  'diciembre',
-]
+import { convertDateToStandardFormat } from './utils'
 
 export function getAllStacks(jobs: Job[]) {
   const stacks = new Set(jobs.map((job) => job.stack))
@@ -22,24 +8,6 @@ export function getAllStacks(jobs: Job[]) {
 
 export function filterJobsByStack(jobs: Job[], stack: Stack) {
   return jobs.filter((job) => job.stack === stack)
-}
-
-export function getTodayInSpanishFormat(): string {
-  const date = new Date()
-  const day = date.getDate().toString().padStart(2, '0')
-  const month = monthNames[date.getMonth()]
-  const year = date.getFullYear()
-
-  return `${day} de ${month} de ${year}`
-}
-
-export function convertDateToStandardFormat(input: string): string {
-  const date = new Date(input)
-  const day = date.getUTCDate().toString().padStart(2, '0')
-  const month = (date.getUTCMonth() + 1).toString().padStart(2, '0')
-  const year = date.getUTCFullYear()
-
-  return `${day}/${month}/${year}`
 }
 
 /**
@@ -67,4 +35,50 @@ export function formatDateOrComputeDifference(input: string): string {
   } else {
     return convertDateToStandardFormat(input)
   }
+}
+
+export function calculateAverageSalariesByStack(jobOffers: Job[]): {
+  [key: string]: number
+} {
+  const stackSums: { [key: string]: number } = {
+    frontend: 0,
+    backend: 0,
+    fullstack: 0,
+    data: 0,
+    mobile: 0,
+    devops: 0,
+  }
+
+  const stackCounts: { [key: string]: number } = {
+    frontend: 0,
+    backend: 0,
+    fullstack: 0,
+    data: 0,
+    mobile: 0,
+    devops: 0,
+  }
+
+  // Iterate over job offers
+  for (let job of jobOffers) {
+    if (job.min_salary && job.max_salary) {
+      // Calculate average salary for this job offer
+      const avgSalary = (Number(job.min_salary) + Number(job.max_salary)) / 2
+
+      // Add to sum and increment count for the stack
+      stackSums[job.stack] += avgSalary
+      stackCounts[job.stack]++
+    }
+  }
+
+  // Calculate and return averages
+  const stackAvgs: { [key: string]: number } = {}
+  for (let stack in stackSums) {
+    if (stackCounts[stack] > 0) {
+      stackAvgs[stack] = stackSums[stack] / stackCounts[stack]
+    } else {
+      stackAvgs[stack] = 0
+    }
+  }
+
+  return stackAvgs
 }

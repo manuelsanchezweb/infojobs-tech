@@ -7,6 +7,7 @@ import JobsFilter from './jobs-filter'
 import { Job, Stack } from '@/types/types'
 import { animate, stagger } from 'motion'
 import { filterJobsByStack } from '@/functions/functions'
+import { JobSalarySection } from './job-salary-section'
 
 export const Jobs = () => {
   const [jobs, setJobs] = useState<Job[]>([])
@@ -45,6 +46,7 @@ export const Jobs = () => {
 
   return (
     <>
+      <JobSalarySection jobs={jobs} />
       <JobsFilter
         setSelectedStack={setSelectedStack}
         selectedStack={selectedStack}
