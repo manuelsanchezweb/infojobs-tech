@@ -4,14 +4,8 @@ export async function getJobById(): Promise<any> {
 
   // TODO: make this with the API
 
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization:
-      'Basic OWJiMDA0YjlkZDI5NGJiZGI3ZTI0NTBkN2Y0YmExOGU6RExSV1NEaXFDaUxJQ21IQzFYUXdoUHhwakdWQ0VMVDhicUpEa2o5cE5FaUorbkNRSmE=',
-  }
-
   try {
-    const response = await fetch(url, { headers })
+    const response = await fetch(url)
     console.log('RESPONSE:', response)
     const data = await response.json()
     console.log('JOB OFFER:', data)
