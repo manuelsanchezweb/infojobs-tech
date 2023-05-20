@@ -48,9 +48,8 @@ export const JobsList = ({ filteredJobs }: { filteredJobs: Job[] }) => {
           ))
         ) : (
           <p>
-            {' '}
-            'Por ahora no tenemos ofertas que se ajusten a esos criterios. Lo
-            sentimos.'
+            Por ahora no tenemos ofertas que se ajusten a esos criterios. Lo
+            sentimos.
           </p>
         )}
       </ul>
