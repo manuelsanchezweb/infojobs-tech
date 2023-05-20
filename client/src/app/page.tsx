@@ -1,6 +1,7 @@
 import { Jobs } from '@/components/job/jobs'
 import { Logo } from '@/components/logo'
 import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
+import { getTodayInSpanishFormat } from '@/functions/functions'
 import { IconGithub } from '@/icons/github'
 
 export default function Home() {
@@ -13,8 +14,8 @@ export default function Home() {
 
       <ChartMonthTech />
 
-      <h1 className="self-start text-left font-bold text-4xl">
-        ¡Encuentra tu trabajo ideal con este moderno buscador!
+      <h1 className="self-start text-left font-bold text-5xl max-w-[900px]">
+        Últimas ofertas de trabajo tecnológicas a {getTodayInSpanishFormat()}
       </h1>
       <Jobs />
 

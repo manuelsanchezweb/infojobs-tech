@@ -19,6 +19,7 @@ export type Job = {
   url: string
   min_salary?: string
   max_salary?: string
-  created_at?: string
+  created_at: string
   remote?: boolean
+  is_active?: boolean
 }

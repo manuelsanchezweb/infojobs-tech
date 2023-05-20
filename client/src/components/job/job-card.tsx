@@ -1,3 +1,4 @@
+import { formatDateOrComputeDifference } from '@/functions/functions'
 import { Job, Technology } from '@/types/types'
 import React from 'react'
 
@@ -16,6 +17,11 @@ export const JobCard = ({ job }: { job: Job }) => {
           <strong>Salario:</strong> {job.min_salary} - {job.max_salary}
         </p>
       )}
+      <p className="text-gray-500 text-xs my-0">
+        <strong>Publicado:</strong>{' '}
+        {/* {convertDateToStandardFormat(job.created_at)} */}
+        {formatDateOrComputeDifference(job.created_at)}
+      </p>
 
       <div className="flex flex-col pt-4 gap-4 w-full mt-auto">
         <div className="flex flex-wrap items-center gap-2 max-w-[250px]">
