@@ -34,3 +34,10 @@ export function convertDateToStandardFormat(input: string): string {
 
   return `${day}/${month}/${year}`
 }
+
+export const valueFormatter = (number: number) =>
+  `$ ${Intl.NumberFormat('us').format(number).toString()}`
+
+export function wait(seconds: number) {
+  return new Promise((resolve) => setTimeout(resolve, seconds * 1000))
+}

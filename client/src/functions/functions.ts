@@ -26,7 +26,7 @@ export function formatDateOrComputeDifference(input: string): string {
   if (hoursDifference < 0) return convertDateToStandardFormat(input)
 
   if (hoursDifference < 1) {
-    return `Hace menos de ${Math.floor(hoursDifference)} hora`
+    return `Hace menos de 1 hora`
   } else if (hoursDifference < 48) {
     return `Hace ${Math.floor(hoursDifference)} horas`
   } else if (hoursDifference < 168) {

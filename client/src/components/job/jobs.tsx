@@ -2,26 +2,25 @@
 
 import React, { useEffect, useState } from 'react'
 import { getJobsData } from '@/api/getJobsData'
-import { JobsList } from './jobs-list'
-import JobsFilter from './jobs-filter'
-import { Job, Stack } from '@/types/types'
-import { animate, stagger } from 'motion'
-import { filterJobsByStack } from '@/functions/functions'
-import { JobSalarySection } from './job-salary-section'
+import { Job } from '@/types/types'
+// import { JobsSalarySection } from './jobs-salary-section'
+import { wait } from '@/functions/utils'
+import JobsSalarySection from './jobs-salary-section'
+import JobsSection from './jobs-section'
+import { Logo } from '../logo'
+// import { getJobById } from '@/api/getJobById'
 
-export const Jobs = () => {
+const Jobs = () => {
   const [jobs, setJobs] = useState<Job[]>([])
-  const [selectedStack, setSelectedStack] = useState<Stack | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
-
-  let filteredJobs =
-    selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
+  // const [selectedJob, setSelectedJob] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const jobsData = await getJobsData()
         setJobs(jobsData)
+        await wait(1.5)
         setLoading(false)
       } catch (error) {
         console.log(error)
@@ -31,28 +30,38 @@ export const Jobs = () => {
     fetchData()
   }, [])
 
-  useEffect(() => {
-    const li = document.querySelectorAll('li')
-    if (!li[0]) return
+  // useEffect(() => {
+  //   const fetchJobId = async () => {
+  //     try {
+  //       const job = await getJobById()
+  //       setSelectedJob(job)
+  //       setLoading(false)
+  //       console.log('Selected Job', selectedJob)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
 
-    animate(
-      li,
-      { opacity: [0, 1], scale: [0, 1] },
-      { delay: stagger(0.1), easing: 'ease-in-out' }
+  //   fetchJobId()
+  // }, [])
+
+  if (loading)
+    return (
+      <div className="min-h-screen flex flex-col gap-8 fixed w-full m-auto justify-center items-center bg-white z-10 px-4">
+        <Logo customClass="text-primary w-48 h-auto" />
+        <p className="text-xl font-bold text-center max-w-[600px]">
+          El sector IT en España es como un gran código en constante evolución.
+          ¡Estás a un commit de ser parte de él!
+        </p>
+      </div>
     )
-  }, [selectedStack, jobs])
-
-  if (loading) return <p>Cargando...</p>
 
   return (
     <>
-      <JobSalarySection jobs={jobs} />
-      <JobsFilter
-        setSelectedStack={setSelectedStack}
-        selectedStack={selectedStack}
-        jobs={jobs}
-      />
-      <JobsList jobs={filteredJobs} />
+      <JobsSection jobs={jobs} />
+      <JobsSalarySection jobs={jobs} />
     </>
   )
 }
+
+export default Jobs

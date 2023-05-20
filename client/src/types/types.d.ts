@@ -23,3 +23,27 @@ export type Job = {
   remote?: boolean
   is_active?: boolean
 }
+
+export type GraphColors =
+  | 'slate'
+  | 'violet'
+  | 'indigo'
+  | 'rose'
+  | 'cyan'
+  | 'amber'
+  | 'gray'
+  | 'zinc'
+  | 'neutral'
+  | 'stone'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'lime'
+  | 'green'
+  | 'emerald'
+  | 'teal'
+  | 'sky'
+  | 'blue'
+  | 'purple'
+  | 'fuchsia'
+  | 'pink'
