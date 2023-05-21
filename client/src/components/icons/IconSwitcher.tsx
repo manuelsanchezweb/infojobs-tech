@@ -2,12 +2,12 @@ import { Stack, Technology } from '@/types/types'
 import { IconAngular, IconQwik, IconReact, IconVue } from './Icons'
 
 type IconSwitcherProps = {
-  icon: Technology | Stack | string
+  icon: Technology | Stack
   classCustom?: string
 }
 
 export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
-  function renderIcon(icon: Technology | Stack | string) {
+  function renderIcon(icon: Technology | Stack) {
     switch (icon) {
       case 'react':
         return <IconReact classCustom={classCustom} />

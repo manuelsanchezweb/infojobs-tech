@@ -145,5 +145,21 @@
     "created_at": "2023-05-20T06:50:20.333Z",
     "remote": false,
     "is_active": true
+  },
+  {
+    "id": 10,
+    "id_infojobs": "123456789",
+    "title": "Desarrollador Frontend en Granada con React",
+    "description": "Buscamos un desarrollador frontend con experiencia en React para unirse a nuestro equipo en Granada.",
+    "company": "Código con Manu",
+    "location": "Granada",
+    "stack": "frontend",
+    "technologies": ["javascript", "css", "html"],
+    "url": "https://www.codigoconmanu.com",
+    "min_salary": "20000",
+    "max_salary": "30000",
+    "created_at": "2023-05-21T09:43:10.222Z",
+    "remote": true,
+    "is_active": true
   }
 ]

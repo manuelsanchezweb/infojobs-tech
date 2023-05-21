@@ -22,19 +22,29 @@ export function formatDateOrComputeDifference(input: string): string {
 
   const difference = currentDate.getTime() - inputDate.getTime()
 
-  const hoursDifference = difference / 1000 / 60 / 60
+  const hoursDifference = Math.floor(difference / 1000 / 60 / 60)
+  const daysDifference = Math.floor(hoursDifference / 24)
+
   if (hoursDifference < 0) return convertDateToStandardFormat(input)
 
   if (hoursDifference < 1) {
     return `Hace menos de 1 hora`
-  } else if (hoursDifference < 48) {
-    return `Hace ${Math.floor(hoursDifference)} horas`
-  } else if (hoursDifference < 168) {
-    // less than 7 days
-    return `Hace ${Math.floor(hoursDifference / 24)} días`
-  } else {
-    return convertDateToStandardFormat(input)
   }
+
+  if (hoursDifference < 2) {
+    return `Hace 1 hora`
+  }
+
+  if (hoursDifference < 48) {
+    return `Hace ${hoursDifference} horas`
+  }
+
+  if (hoursDifference < 168) {
+    // less than 7 days
+    return `Hace ${daysDifference} días`
+  }
+
+  return convertDateToStandardFormat(input)
 }
 
 export function calculateAverageSalariesByStack(jobOffers: Job[]): {

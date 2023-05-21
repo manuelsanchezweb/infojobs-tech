@@ -1,44 +1,72 @@
 'use client'
 
-import { filterJobsByStack } from '@/functions/functions'
 import { Job, Stack } from '@/types/types'
-import React, { useEffect, useMemo, useState } from 'react'
-import { animate, stagger } from 'motion'
+import React, { useEffect, useState } from 'react'
 import JobsFilter from './jobs-filter'
 import { JobsList } from './jobs-list'
-import { getTodayInSpanishFormat } from '@/functions/utils'
+import { getTodayInSpanishFormat, wait } from '@/functions/utils'
+import { Logo } from '../logo'
+import { getJobsData } from '@/api/getJobsData'
 
-const JobsSection = ({ jobs }: { jobs: Job[] }) => {
-  const [selectedStack, setSelectedStack] = useState<Stack | null>(null)
-
-  const filteredJobs = useMemo(() => {
-    return selectedStack === null
-      ? jobs
-      : filterJobsByStack(jobs, selectedStack)
-  }, [jobs, selectedStack])
+const JobsSection = ({
+  showFilters,
+  stack,
+  title,
+}: {
+  showFilters?: boolean
+  stack?: Stack
+  title?: string
+}) => {
+  const [selectedStack, setSelectedStack] = useState<Stack | null>(
+    stack || null
+  )
+  const [jobs, setJobs] = useState<Job[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    const li = document.querySelectorAll('.job-card')
-    if (!li[0]) return
+    document.body.classList.add('overflow-hidden')
+    const fetchData = async () => {
+      try {
+        const jobsData = await getJobsData()
+        setJobs(jobsData)
+        await wait(0.5)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
 
-    animate(
-      li,
-      { opacity: [0, 1], scale: [0, 1] },
-      { delay: stagger(0.1), easing: 'ease-in-out' }
+      document.body.classList.remove('overflow-hidden')
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-full m-auto justify-center items-center bg-white z-10 px-4">
+        <Logo customClass="text-primary w-48 h-auto" />
+        <p className="text-xl font-bold text-center max-w-[600px]">
+          El sector IT en España es como un gran código en constante evolución.
+          ¡Estás a un commit de ser parte de él!
+        </p>
+      </div>
     )
-  }, [selectedStack, jobs])
+  }
 
   return (
-    <section className="w-full">
+    <section className="w-full my-12 container">
       <h1 className="self-start text-left font-bold text-5xl max-w-[900px] mb-12">
-        Últimas ofertas de trabajo tecnológicas a {getTodayInSpanishFormat()}
+        {title ||
+          `Últimas ofertas de trabajo tecnológicas a ${getTodayInSpanishFormat()}`}
       </h1>
-      <JobsFilter
-        setSelectedStack={setSelectedStack}
-        selectedStack={selectedStack}
-        jobs={jobs}
-      />
-      <JobsList filteredJobs={filteredJobs} />
+      {showFilters && (
+        <JobsFilter
+          setSelectedStack={setSelectedStack}
+          selectedStack={selectedStack}
+          jobs={jobs}
+        />
+      )}
+      <JobsList jobs={jobs} selectedStack={selectedStack} />
     </section>
   )
 }

@@ -1,11 +1,25 @@
-import { Job } from '@/types/types'
-import React, { useMemo } from 'react'
+import { Job, Stack } from '@/types/types'
+import React, { useEffect, useMemo } from 'react'
 import { JobCard } from './job-card'
 import usePagination from '@/hooks/usePagination'
+import { filterJobsByStack } from '@/functions/functions'
+import { animate, stagger } from 'motion'
 
 const NUMBER_OF_JOBS_PER_PAGE = 6
 
-export const JobsList = ({ filteredJobs }: { filteredJobs: Job[] }) => {
+export const JobsList = ({
+  jobs,
+  selectedStack,
+}: {
+  jobs: Job[]
+  selectedStack: Stack | null
+}) => {
+  const filteredJobs = useMemo(() => {
+    return selectedStack === null
+      ? jobs
+      : filterJobsByStack(jobs, selectedStack)
+  }, [jobs, selectedStack])
+
   const initialState = {
     currentPage: 1,
     pageSize: NUMBER_OF_JOBS_PER_PAGE,
@@ -17,6 +31,17 @@ export const JobsList = ({ filteredJobs }: { filteredJobs: Job[] }) => {
   const isNextDisabled =
     state.currentPage === Math.ceil(filteredJobs.length / state.pageSize) ||
     filteredJobs.length === 0
+
+  useEffect(() => {
+    const li = document.querySelectorAll('.job-card')
+    if (!li[0]) return
+
+    animate(
+      li,
+      { opacity: [0, 1], scale: [0, 1] },
+      { delay: stagger(0.1), easing: 'ease-in-out' }
+    )
+  }, [selectedStack, jobs])
 
   const sortedJobs = useMemo(() => {
     return [...filteredJobs].sort((a, b) => {

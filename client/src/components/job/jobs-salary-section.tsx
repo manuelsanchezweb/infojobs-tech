@@ -1,14 +1,30 @@
 import { calculateAverageSalariesByStack } from '@/functions/functions'
 import { Card, Title, DonutChart } from '@tremor/react'
 import { GraphColors, Job } from '@/types/types'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   firstLetterUppercase,
   getTodayInSpanishFormat,
   valueFormatter,
 } from '@/functions/utils'
+import { getJobsData } from '@/api/getJobsData'
 
-const JobsSalarySection = ({ jobs }: { jobs: Job[] }) => {
+const JobsSalarySection = ({ title }: { title?: string }) => {
+  const [jobs, setJobs] = useState<Job[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const jobsData = await getJobsData()
+        setJobs(jobsData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   const averageSalariesByStack = calculateAverageSalariesByStack(jobs)
   const averageSalariesByStackArray = Object.entries(
     averageSalariesByStack
@@ -22,9 +38,9 @@ const JobsSalarySection = ({ jobs }: { jobs: Job[] }) => {
   }
 
   return (
-    <section className="w-full">
-      <h2 className="self-start text-left font-bold text-3xl max-w-[900px] mb-8">
-        Stacks mejor pagados en la actualidad
+    <section className="w-full container">
+      <h2 className="self-start text-left font-bold text-4xl max-w-[900px] mb-8">
+        {title || 'Media de salario por stack'}
       </h2>
 
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 w-full my-6">

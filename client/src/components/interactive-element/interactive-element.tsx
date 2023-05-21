@@ -24,9 +24,13 @@ type DataProps = {
     headline: string
     options: OptionProps[]
   }
+  numberOfCols?: number
 }
 
-export default function InteractiveElement({ data }: DataProps) {
+export default function InteractiveElement({
+  data,
+  numberOfCols = 3,
+}: DataProps) {
   const [selectedOption, setSelectedOption] = useState({} as OptionProps)
   const [viewSelected, setViewSelected] = useState(false)
 
@@ -65,21 +69,26 @@ export default function InteractiveElement({ data }: DataProps) {
   }, [])
 
   return (
-    <section className="w-full">
+    <section className="w-full container">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 my-12 md:my-2 min-h-[20vh] md:min-h-[35vh]">
         {!viewSelected ? (
           <>
-            <h2 className="text-3xl md:text-5xl max-w-[500px] mb-4 text-center md:text-left">
+            <h2 className="text-3xl md:text-5xl max-w-[500px] font-bold mb-4 text-center md:text-left">
               {data.headline}
             </h2>
-            <div className="justify-center gap-6 grid grid-cols-1 md:grid-cols-2">
+            <div
+              className={`justify-center gap-6 grid grid-cols-1 md:grid-cols-${numberOfCols}`}
+            >
               {data.options.map((option) => (
                 <button
                   key={option.id}
                   onClick={() => handleOptionSelection(option)}
                   className="animated bg-white border rounded-3xl flex flex-col items-center justify-center min-w-[125px] min-h-[125px] gap-4 hover:bg-primaryLight focus:bg-primaryLight"
                 >
-                  <IconSwitcher classCustom="w-8 h-auto" icon={option.icon} />
+                  <IconSwitcher
+                    classCustom="w-8 h-auto"
+                    icon={option.icon as Stack | Technology}
+                  />
                   <div>{option.label}</div>
                 </button>
               ))}
@@ -93,9 +102,7 @@ export default function InteractiveElement({ data }: DataProps) {
             >
               x
             </button>
-            <h2 className="text-5xl font-semibold mb-4">
-              {selectedOption.title}
-            </h2>
+            <h2 className="text-3xl font-bold mb-4">{selectedOption.title}</h2>
             <p className="text-xl mb-8">{selectedOption.description}</p>
             {selectedOption.cta?.url &&
               selectedOption.cta?.label &&

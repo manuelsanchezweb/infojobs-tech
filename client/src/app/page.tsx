@@ -1,31 +1,24 @@
+import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import Jobs from '@/components/job/jobs'
-import { Logo } from '@/components/logo'
-import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
-import { IconGithub } from '@/icons/github'
-
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center gap-24 py-24 px-4">
-      <div className="flex flex-col items-end justify-end">
-        <Logo customClass="text-primary w-64 h-auto" />
-        <small className="font-bold italic text-2xl">Tech</small>
-      </div>
+    <main className="flex flex-col items-center justify-center gap-12 pb-24">
+      <HeroGeneral />
 
       <Jobs />
 
       <InteractiveElement
         data={{
-          headline: '¿Cuál es tu tecnología de frontend favorita?',
+          headline: '¿Qué stack te interesa más?',
           options: [
             {
               id: 1,
-              icon: 'react',
-              label: 'React',
-              title:
-                'Impulsa tu carrera con React: El gigante de los frameworks frontend',
+              icon: 'frontend',
+              label: 'Frontend',
+              title: 'Conviértete en el arquitecto de la experiencia web',
               description:
-                '¿Sabías que React es uno de los frameworks más demandados por las empresas de tecnología en todo el mundo? Aprende más sobre cómo dominar React puede impulsar tu carrera y abrirte las puertas a oportunidades laborales increíbles.',
+                'El diseño y la interactividad de las páginas web son esenciales en el mundo digital de hoy. ¿Quieres saber cuáles son las últimas tecnologías frontend más demandadas en 2023? ¡Haz click en el enlace de abajo!',
               cta: {
                 label: 'Descubre más',
                 intern: true,
@@ -34,57 +27,72 @@ export default function Home() {
             },
             {
               id: 2,
-              icon: 'vue',
-              label: 'Vue',
-              title: 'Vue: La joya emergente del desarrollo frontend',
+              icon: 'backend',
+              label: 'Backend',
+              title: 'Haz posible la magia detrás de las escenas',
               description:
-                'Vue se está convirtiendo rápidamente en el framework de elección para los desarrolladores frontend. Descubre cómo Vue está cambiando el panorama del desarrollo web y cómo puede beneficiar a tu futuro profesional.',
+                'El backend es el corazón de cualquier aplicación. ¿Estás listo para descubrir qué tecnologías backend están marcando tendencia en 2023? ¡Descúbrelo ahora!',
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/frontend',
+                url: '/stack/backend',
               },
             },
             {
               id: 3,
-              icon: 'qwik',
-              label: 'Qwik',
-              title:
-                'Qwik: La tecnología frontend que promete revolucionar la web',
+              icon: 'fullstack',
+              label: 'Fullstack',
+              title: 'Domina ambos mundos: frontend y backend',
               description:
-                'Qwik es un nuevo y emocionante framework que tiene como objetivo mejorar la eficiencia y la velocidad de las aplicaciones web. Aprende más sobre cómo este innovador framework puede cambiar el rumbo de tu carrera en desarrollo frontend.',
+                'Como desarrollador Fullstack, tienes el poder de construir una aplicación de principio a fin. ¿Quieres saber cuáles son las habilidades Fullstack más demandadas en 2023? ¡Haz click aquí!',
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/frontend',
+                url: '/stack/fullstack',
               },
             },
             {
               id: 4,
-              icon: 'angular',
-              label: 'Angular',
-              title:
-                'Angular: Un pilar indiscutible en el desarrollo de aplicaciones web',
+              icon: 'mobile',
+              label: 'Mobile',
+              title: 'Escribe el futuro del desarrollo móvil',
               description:
-                'Angular es un framework estable y robusto, ampliamente utilizado en la industria de la tecnología. Conoce cómo el dominio de Angular puede aumentar tu valor en el mercado laboral y abrirte la puerta a una gran variedad de oportunidades en desarrollo web.',
+                'El mundo es móvil y las oportunidades en el desarrollo de apps son infinitas. ¿Quieres saber cuáles son las tecnologías de desarrollo móvil más populares en 2023? ¡Descúbrelo aquí!',
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/frontend',
+                url: '/stack/mobile',
+              },
+            },
+            {
+              id: 5,
+              icon: 'data',
+              label: 'Data',
+              title: 'Descubre los secretos ocultos en los datos',
+              description:
+                'Los datos son el nuevo petróleo, y el mundo necesita expertos en datos. ¿Quieres conocer cuáles son las tecnologías y habilidades en análisis de datos más demandadas en 2023? ¡Descúbrelo ahora!',
+              cta: {
+                label: 'Descubre más',
+                intern: true,
+                url: '/stack/data',
+              },
+            },
+            {
+              id: 6,
+              icon: 'devops',
+              label: 'DevOps',
+              title: 'Construye, prueba y despliega con eficacia',
+              description:
+                'DevOps es esencial para un desarrollo y despliegue de software eficaz. ¿Quieres conocer las herramientas y prácticas DevOps más valoradas en 2023? ¡Haz click aquí!',
+              cta: {
+                label: 'Descubre más',
+                intern: true,
+                url: '/stack/devops',
               },
             },
           ],
         }}
       />
-
-      <ChartMonthTech />
-
-      <a
-        className="btn"
-        href="https://github.com/manuelsanchezweb/infojobs-tech"
-      >
-        <IconGithub /> Ver repo
-      </a>
     </main>
   )
 }

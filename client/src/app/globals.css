@@ -12,7 +12,7 @@
   }
 }
 
-body {
+.container {
   width: clamp(min(75ch, 100% - 4rem), 100%, var(--max-width));
   margin-inline: auto;
 }
