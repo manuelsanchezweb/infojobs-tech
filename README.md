@@ -8,11 +8,11 @@ No te asustes, estamos trabajando duro por [aquí](https://infojobs-tech.vercel.
 
 ## TODOs
 
-- [ ] Traer graphs
+- [x] Traer graphs
 - [x] Crear filtrado
-- [ ] Crear paginado simple
-- [ ] Mostrar las tarjetas de otra forma
-- [ ] Sorpresa interactiva 1
+- [x] Crear paginado simple
+- [x] Mostrar las tarjetas de otra forma
+- [x] Sorpresa interactiva 1
 - [ ] page id dynamic?
 
 ## 📧 Contacto

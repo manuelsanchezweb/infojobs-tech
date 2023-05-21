@@ -12,9 +12,16 @@ module.exports = {
         xs: '480px',
       },
       colors: {
-        primary: '#167db7',
+        primary: '#1972A3',
         primaryDark: '#126492',
+        primaryLight: '#5CA4CD',
         primaryTransparent: 'rgba(22,125,183,0.7)',
+        accent: '#FF6340',
+        accentDark: '#E05C3E',
+        accentLight: '#FF9279',
+        accentTransparent: 'rgba(255,99,71,0.7)',
+        grayBrand: '#999999',
+        grayBrandLight: '#B8B8B8',
         // ...
       },
       backgroundImage: {

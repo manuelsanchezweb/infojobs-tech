@@ -16,3 +16,7 @@ body {
   width: clamp(min(75ch, 100% - 4rem), 100%, var(--max-width));
   margin-inline: auto;
 }
+
+.overflow-hidden {
+  overflow: hidden;
+}

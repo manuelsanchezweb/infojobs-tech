@@ -23,7 +23,7 @@ export const JobCard = ({ job }: { job: Job }) => {
       <div className="flex flex-col pt-4 gap-4 w-full mt-auto">
         <div className="flex flex-wrap items-center gap-2 max-w-[250px]">
           {job.technologies.map((technology: Technology | string) => (
-            <span className="flex bg-gray-200 rounded-full px-3 py-1 text-[8px] flex-nowrap font-semibold text-gray-700">
+            <span className="flex bg-gray-200 rounded-full border px-3 py-1 text-[8px] flex-nowrap font-semibold text-gray-700">
               {technology}
             </span>
           ))}

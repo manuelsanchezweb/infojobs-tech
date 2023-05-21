@@ -1,13 +1,13 @@
-import { Technology } from '@/types/types'
-import { IconQwik, IconReact, IconVue } from './Icons'
+import { Stack, Technology } from '@/types/types'
+import { IconAngular, IconQwik, IconReact, IconVue } from './Icons'
 
 type IconSwitcherProps = {
-  icon: Technology
+  icon: Technology | Stack | string
   classCustom?: string
 }
 
 export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
-  function renderIcon(icon: Technology) {
+  function renderIcon(icon: Technology | Stack | string) {
     switch (icon) {
       case 'react':
         return <IconReact classCustom={classCustom} />
@@ -15,6 +15,8 @@ export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
         return <IconVue classCustom={classCustom} />
       case 'qwik':
         return <IconQwik classCustom={classCustom} />
+      case 'angular':
+        return <IconAngular classCustom={classCustom} />
 
       default:
         return <IconReact classCustom={classCustom} />
