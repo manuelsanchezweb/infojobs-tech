@@ -16,7 +16,7 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
         height: '350px',
       }}
     >
-      <div className="h-full flex flex-col justify-center items-center text-center container relative">
+      <div className="h-full flex flex-col justify-center items-center text-center container-wrapper relative">
         <a
           className="btn absolute right-2 top-8"
           href="https://github.com/manuelsanchezweb/infojobs-tech"
@@ -29,7 +29,7 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
         </Link>
 
         {icon && (
-          <div className="absolute -bottom-16 right-2 border border-primaryDark bg-white rounded-full p-8">
+          <div className="absolute -bottom-16 right-4 border border-primaryDark bg-white rounded-full p-8">
             <IconSwitcher classCustom="w-16 h-auto" icon={icon} />
           </div>
         )}

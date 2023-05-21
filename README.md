@@ -13,7 +13,7 @@ No te asustes, estamos trabajando duro por [aquí](https://infojobs-tech.vercel.
 - [x] Crear paginado simple
 - [x] Mostrar las tarjetas de otra forma
 - [x] Sorpresa interactiva 1
-- [ ] page id dynamic?
+- [x] page id dynamic?
 
 ## 📧 Contacto
 

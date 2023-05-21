@@ -38,7 +38,7 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
   }
 
   return (
-    <section className="w-full container">
+    <section className="w-full container-wrapper">
       <h2 className="self-start text-left font-bold text-4xl max-w-[900px] mb-8">
         {title || 'Media de salario por stack'}
       </h2>

@@ -46,19 +46,19 @@ export default function Page({ params }: { params: { jobId: string } }) {
   return (
     <main className="flex flex-col items-center justify-center gap-12 pb-24">
       <HeroGeneral icon="qwik" />
-      <h1 className="text-3xl md:text-5xl font-bold self-start container">
+      <h1 className="text-3xl md:text-5xl font-bold self-start container-wrapper">
         This is the id of the job offer: {params.jobId}
       </h1>
       <h2>
         Pero estamos prototipando, así que le hacemos fetch a uno que conocemos
         (see code)
       </h2>
-      <div className="container">
+      <div className="container-wrapper">
         <h3>{job.title}</h3>
         <p>{job.description}</p>
       </div>
 
-      <div className="container flex flex-col md:flex-row gap-2">
+      <div className="container-wrapper flex flex-col md:flex-row gap-2">
         <button className="btn" type="button" onClick={() => router.back()}>
           Volver a la página anterior
         </button>

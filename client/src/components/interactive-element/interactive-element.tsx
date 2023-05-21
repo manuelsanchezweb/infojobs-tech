@@ -69,15 +69,17 @@ export default function InteractiveElement({
   }, [])
 
   return (
-    <section className="w-full container">
+    <section className="w-full container-wrapper">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 my-12 md:my-2 min-h-[20vh] md:min-h-[35vh]">
         {!viewSelected ? (
           <>
-            <h2 className="text-3xl md:text-5xl max-w-[500px] font-bold mb-4 text-center md:text-left">
+            <h2 className="text-3xl md:text-5xl max-w-[350px] lg:max-w-[500px] font-bold mb-4 text-center md:text-left">
               {data.headline}
             </h2>
             <div
-              className={`justify-center gap-6 grid grid-cols-1 md:grid-cols-${numberOfCols}`}
+              className={`justify-center gap-6 grid grid-cols-2 ${
+                numberOfCols == 3 ? 'md:grid-cols-3' : ''
+              } gap-6 `}
             >
               {data.options.map((option) => (
                 <button
@@ -102,7 +104,9 @@ export default function InteractiveElement({
             >
               x
             </button>
-            <h2 className="text-3xl font-bold mb-4">{selectedOption.title}</h2>
+            <h2 className="text-3xl font-bold mb-4 max-w-[600px] ">
+              {selectedOption.title}
+            </h2>
             <p className="text-xl mb-8">{selectedOption.description}</p>
             {selectedOption.cta?.url &&
               selectedOption.cta?.label &&

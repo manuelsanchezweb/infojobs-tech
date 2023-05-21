@@ -128,7 +128,7 @@ export default function Page() {
         ]}
       />
 
-      <div className="container flex flex-col md:flex-row gap-2">
+      <div className="container-wrapper flex flex-col md:flex-row gap-2">
         <button className="btn" type="button" onClick={() => router.back()}>
           Volver a la página anterior
         </button>
