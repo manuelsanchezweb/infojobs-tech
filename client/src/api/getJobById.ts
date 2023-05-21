@@ -1,7 +1,7 @@
-export async function getJobById(): Promise<any> {
-  const jobId = '0c53ee98b14c108b0126fdc68dc4b9'
-  const url = `https://api.infojobs.net/api/7/offer?${jobId}`
+import { API_JOB_OFFER_BY_ID } from '@/constants/constants'
 
+export async function getJobById({ jobId }: { jobId: string }): Promise<any> {
+  const url = `${API_JOB_OFFER_BY_ID}${jobId}`
   // TODO: make this with the API
 
   try {

@@ -1,5 +1,6 @@
 import { formatDateOrComputeDifference } from '@/functions/functions'
 import { Job, Technology } from '@/types/types'
+import Link from 'next/link'
 import React from 'react'
 
 export const JobCard = ({ job }: { job: Job }) => {
@@ -28,15 +29,13 @@ export const JobCard = ({ job }: { job: Job }) => {
             </span>
           ))}
         </div>
-        <a
+        <Link
           title={`Ver más info sobre ${job.title}`}
           className="btn text-xs"
-          target="_blank"
-          rel="nofollow noopener"
           href={job.url}
         >
           Ver más info
-        </a>
+        </Link>
       </div>
     </li>
   )
