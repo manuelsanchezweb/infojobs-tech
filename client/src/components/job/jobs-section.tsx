@@ -54,7 +54,7 @@ const JobsSection = ({
   }
 
   return (
-    <section className="w-full my-12 container-wrapper">
+    <section className="w-full container-wrapper">
       <h1 className="self-start text-left font-bold text-3xl md:text-5xl max-w-[900px] mb-12">
         {title ||
           `Últimas ofertas de trabajo tecnológicas a ${getTodayInSpanishFormat()}`}
