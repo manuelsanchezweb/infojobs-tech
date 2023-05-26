@@ -6,12 +6,15 @@ import { Logo } from '@/components/logo'
 import { wait } from '@/functions/utils'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { JobSpecific } from '@/types/types'
 
 export default function Page({ params }: { params: { jobId: string } }) {
-  const [job, setJob] = useState<any>([])
+  const [job, setJob] = useState<JobSpecific | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
-  const staticJobId = '91b9529561425ba4e3f256c0feff5e'
+  const staticJobId = 'e705487186421c8dab2749e651a52d'
   const router = useRouter()
+
+  console.log(staticJobId)
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden')
@@ -47,7 +50,7 @@ export default function Page({ params }: { params: { jobId: string } }) {
     <main className="flex flex-col items-center justify-center gap-12 pb-24">
       <HeroGeneral icon="qwik" />
       <div className="container-wrapper">
-        <h1 className="text-3xl md:text-5xl font-bold self-start container-wrapper">
+        <h1 className="text-3xl md:text-5xl font-bold self-start">
           This is the id of the job offer: {params.jobId}
         </h1>
         <h2>
@@ -56,8 +59,29 @@ export default function Page({ params }: { params: { jobId: string } }) {
         </h2>
 
         <br />
-        <h3>{job.title}</h3>
-        <p>{job.description}</p>
+        <h3>{job?.title}</h3>
+        <p>{job?.description}</p>
+        <p>Duración del contrato: {job?.contractDuration}</p>
+        <p>Tipo de contrato: {job?.contractType.value}</p>
+        <p>
+          Lugar: {job?.city}, {job?.country.value}
+        </p>
+        <p>Fecha de publicación de la oferta: {job?.creationDate}</p>
+        <p>Experiencia mínima: {job?.experienceMin.value}</p>
+        <p>Requisitos mínimos: {job?.minRequirements}</p>
+        <p>Estudios mínimos: {job?.studiesMin.value}</p>
+        <p>Requisitos que suman: {job?.desiredRequirements}</p>
+        <p>Descripción del salario: {job?.salaryDescription}</p>
+        <p>Subcategoría de la oferta: {job?.subcategory.value}</p>
+        <p>Nivel del puesto: {job?.jobLevel.value}</p>
+        <p>Numero de solicitudes: {job?.applications}</p>
+        <p>Numero de vacantes: {job?.vacancies}</p>
+        <p>
+          Skills:{' '}
+          {job?.skillsList.map((skill) => (
+            <span key={skill.skill}>{skill.skill}</span>
+          ))}
+        </p>
       </div>
 
       <div className="container-wrapper flex flex-col md:flex-row gap-2">
