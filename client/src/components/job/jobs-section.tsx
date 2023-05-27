@@ -20,7 +20,7 @@ const JobsSection = ({
   const [selectedStack, setSelectedStack] = useState<Stack | null>(
     stack || null
   )
-  const [jobs, setJobs] = useState<Job[]>([])
+  const [jobs, setJobs] = useState<Job[] | null>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {

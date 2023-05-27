@@ -3,7 +3,7 @@ import { Job, Stack } from '@/types/types'
 import React from 'react'
 
 type JobsFilterProps = {
-  jobs: Job[]
+  jobs: Job[] | null
   selectedStack: Stack | null
   setSelectedStack: (stack: Stack | null) => void
 }
@@ -16,6 +16,8 @@ const JobsFilter = ({
   const handleStackClick = (stack: Stack | null) => {
     setSelectedStack(stack)
   }
+
+  if (!jobs) return null
 
   return (
     <div className="flex flex-wrap gap-4 my-4 items-start w-full">
