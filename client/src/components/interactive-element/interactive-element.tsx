@@ -85,7 +85,7 @@ export default function InteractiveElement({
                 <button
                   key={option.id}
                   onClick={() => handleOptionSelection(option)}
-                  className="animated bg-white border rounded-3xl flex flex-col items-center justify-center min-w-[125px] min-h-[125px] gap-4 hover:bg-primaryLight focus:bg-primaryLight"
+                  className="animated bg-white border rounded-3xl flex flex-col items-center justify-center min-w-[125px] min-h-[125px] gap-4 hover:bg-accentLight focus:bg-accent"
                 >
                   <IconSwitcher
                     classCustom="w-8 h-auto"

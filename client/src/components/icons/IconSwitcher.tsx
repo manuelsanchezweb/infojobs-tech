@@ -1,5 +1,16 @@
 import { Illustrations, Stack, Technology } from '@/types/types'
-import { IconAngular, IconQwik, IconReact, IconVue } from './Icons'
+import {
+  IconAngular,
+  IconBackend,
+  IconData,
+  IconDevOps,
+  IconFrontend,
+  IconFullStack,
+  IconMobile,
+  IconQwik,
+  IconReact,
+  IconVue,
+} from './Icons'
 import { IllustrationError } from './illustrations'
 
 type IconSwitcherProps = {
@@ -20,9 +31,21 @@ export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
         return <IconAngular classCustom={classCustom} />
       case 'error':
         return <IllustrationError classCustom={classCustom} />
+      case 'frontend':
+        return <IconFrontend classCustom={classCustom} />
+      case 'backend':
+        return <IconBackend classCustom={classCustom} />
+      case 'fullstack':
+        return <IconFullStack classCustom={classCustom} />
+      case 'data':
+        return <IconData classCustom={classCustom} />
+      case 'devops':
+        return <IconDevOps classCustom={classCustom} />
+      case 'mobile':
+        return <IconMobile classCustom={classCustom} />
 
       default:
-        return <IconReact classCustom={classCustom} />
+        return <IconFullStack classCustom={classCustom} />
     }
   }
 

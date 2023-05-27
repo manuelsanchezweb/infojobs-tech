@@ -52,7 +52,7 @@ export default function Page() {
   return (
     <>
       <main className="flex flex-col items-center justify-center gap-12 pb-16">
-        <HeroGeneral icon="qwik" />
+        <HeroGeneral icon={stack} />
 
         <JobsSection
           title={`Últimas ofertas ${stack} a ${getTodayInSpanishFormat()}`}

@@ -1,6 +1,7 @@
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import Jobs from '@/components/job/jobs'
+
 export default function Home() {
   return (
     <>

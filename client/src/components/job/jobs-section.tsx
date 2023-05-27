@@ -4,7 +4,7 @@ import { Job, Stack } from '@/types/types'
 import React, { useEffect, useState } from 'react'
 import JobsFilter from './jobs-filter'
 import { JobsList } from './jobs-list'
-import { getTodayInSpanishFormat, wait } from '@/functions/utils'
+import { getTodayInSpanishFormat } from '@/functions/utils'
 import { Logo } from '../logo'
 import { getJobsData } from '@/api/getJobsData'
 
@@ -29,7 +29,6 @@ const JobsSection = ({
       try {
         const jobsData = await getJobsData()
         setJobs(jobsData || [])
-        await wait(0.5)
         setLoading(false)
       } catch (error) {
         console.log(error)

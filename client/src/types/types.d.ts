@@ -156,4 +156,5 @@ export interface JobSpecific {
   skillsList: Skill[]
   salaryDescription: string
   error?: string
+  stack: Stack
 }

@@ -1,16 +1,11 @@
 'use client'
 
-import { IconGithub } from '@/icons/github'
 import React from 'react'
-import { Logo } from '../logo'
 import { IconSwitcher } from '../icons/IconSwitcher'
 import { Stack, Technology } from '@/types/types'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import Navigation from '../navigation/navigation'
 
 const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
-  const pathname = usePathname()
-
   return (
     <div
       className="flex flex-col items-center justify-center relative border-b border-primaryDark mb-12"
@@ -22,28 +17,12 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
       }}
     >
       <div className="h-full flex justify-between items-start container-wrapper relative py-8">
-        <HeroLogo />
-
-        <div className="flex items-center gap-8">
-          <Link
-            href="/sobre-nosotros"
-            className={`text-sm ${
-              pathname === '/sobre-nosotros' ? 'font-bold' : ''
-            }`}
-          >
-            Sobre nosotros
-          </Link>
-          <a
-            className="btn text-xs items-center"
-            href="https://github.com/manuelsanchezweb/infojobs-tech"
-          >
-            <IconGithub customClass="w-4" /> Ver repo
-          </a>
-        </div>
+        <Navigation />
 
         {icon && (
-          <div className="absolute -bottom-16 right-4 border border-primaryDark bg-white rounded-full p-8">
+          <div className="flex flex-col items-center justify-center absolute -bottom-16 right-4 border border-primaryDark bg-white rounded-full w-[150px] h-[150px]">
             <IconSwitcher classCustom="w-16 h-auto" icon={icon} />
+            <small>{icon}</small>
           </div>
         )}
       </div>
@@ -52,15 +31,3 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
 }
 
 export default HeroGeneral
-
-const HeroLogo = () => {
-  return (
-    <Link
-      href="/"
-      className="flex flex-col justify-end items-end hover:no-underline focus:no-underline"
-    >
-      <Logo customClass="text-primary w-32 h-auto" />
-      <small className="font-bold italic text-xs">Tech</small>
-    </Link>
-  )
-}

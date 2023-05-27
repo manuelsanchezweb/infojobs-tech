@@ -1,8 +1,6 @@
 import { getJobById } from '@/api/getJobById'
 import NotFound from '@/app/not-found'
 import HeroGeneral from '@/components/hero/hero-general'
-import { Logo } from '@/components/logo'
-import Link from 'next/link'
 
 async function getJobData(id: string) {
   try {
@@ -23,7 +21,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
   return (
     <>
       <main className="flex flex-col items-center justify-center gap-12 pb-16">
-        <HeroGeneral icon="qwik" />
+        <HeroGeneral icon={job?.stack} />
         <div className="container-wrapper">
           <div className="mb-12">
             <h1 className="text-3xl md:text-5xl font-bold self-start mb-2">
