@@ -8,12 +8,12 @@ No te asustes, estamos trabajando duro por [aquí](https://infojobs-tech.vercel.
 
 ## TODOs
 
-- [x] Traer graphs
-- [x] Crear filtrado
-- [x] Crear paginado simple
-- [x] Mostrar las tarjetas de otra forma
-- [x] Sorpresa interactiva 1
-- [x] page id dynamic?
+- [x] Crear footer
+- [ ] Añadir poss de filtro
+- [ ] Añadir icons para el stack
+- [ ] Hacer dinámico el fetch del stack
+- [ ] Hacer fetch desde el servidor (stack)
+- [x] Hacer fetch desde el servidor (id)
 
 ## 📧 Contacto
 

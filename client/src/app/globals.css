@@ -8,7 +8,7 @@
 
 @layer components {
   .btn {
-    @apply flex gap-4 py-2 px-4 border border-primaryDark rounded-md shadow-sm bg-white text-black hover:bg-primaryDark hover:text-white focus:bg-primaryDark focus:text-white transition-all duration-200 ease-in-out cursor-pointer text-center justify-center;
+    @apply flex gap-2 py-1 px-3 border border-primaryDark rounded-md shadow-sm bg-white text-black hover:bg-primaryDark hover:text-white focus:bg-primaryDark focus:text-white transition-all duration-200 ease-in-out cursor-pointer text-center justify-center hover:no-underline focus:no-underline;
   }
 }
 
@@ -20,4 +20,9 @@
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
 }

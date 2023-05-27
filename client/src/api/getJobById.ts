@@ -10,9 +10,9 @@ export async function getJobById({
 
   try {
     const response = await fetch(url)
-    console.log('RESPONSE:', response)
+    // console.log('RESPONSE:', response)
     const data = await response.json()
-    console.log('JOB OFFER:', data)
+    // console.log('JOB OFFER:', data)
     return data as JobSpecific
   } catch (error) {
     console.error(`Fetch failed: ${error}`)

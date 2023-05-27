@@ -16,17 +16,20 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
         height: '350px',
       }}
     >
-      <div className="h-full flex flex-col justify-center items-center text-center container-wrapper relative">
-        <a
-          className="btn absolute right-2 top-8"
-          href="https://github.com/manuelsanchezweb/infojobs-tech"
-        >
-          <IconGithub /> Ver repo
-        </a>
-        <Link href="/" className="flex flex-col justify-end items-end">
-          <Logo customClass="text-primary w-64 h-auto" />
-          <small className="font-bold italic text-2xl">Tech</small>
-        </Link>
+      <div className="h-full flex justify-between items-start container-wrapper relative py-8">
+        <HeroLogo />
+
+        <div className="flex items-center gap-8">
+          <Link href="/" className="text-sm">
+            Sobre el proyecto
+          </Link>
+          <a
+            className="btn text-xs items-center"
+            href="https://github.com/manuelsanchezweb/infojobs-tech"
+          >
+            <IconGithub customClass="w-4" /> Ver repo
+          </a>
+        </div>
 
         {icon && (
           <div className="absolute -bottom-16 right-4 border border-primaryDark bg-white rounded-full p-8">
@@ -39,3 +42,15 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
 }
 
 export default HeroGeneral
+
+const HeroLogo = () => {
+  return (
+    <Link
+      href="/"
+      className="flex flex-col justify-end items-end hover:no-underline focus:no-underline"
+    >
+      <Logo customClass="text-primary w-32 h-auto" />
+      <small className="font-bold italic text-xs">Tech</small>
+    </Link>
+  )
+}

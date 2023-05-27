@@ -5,7 +5,9 @@ export type Stack =
   | 'mobile'
   | 'devops'
   | 'data'
+
 export type Technology = 'react' | 'vue' | 'qwik' | 'angular' | 'svelte'
+export type Illustrations = 'error'
 
 export type Job = {
   id: number
