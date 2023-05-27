@@ -1,11 +1,16 @@
+'use client'
+
 import { IconGithub } from '@/icons/github'
 import React from 'react'
 import { Logo } from '../logo'
 import { IconSwitcher } from '../icons/IconSwitcher'
 import { Stack, Technology } from '@/types/types'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
+  const pathname = usePathname()
+
   return (
     <div
       className="flex flex-col items-center justify-center relative border-b border-primaryDark mb-12"
@@ -20,8 +25,13 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
         <HeroLogo />
 
         <div className="flex items-center gap-8">
-          <Link href="/" className="text-sm">
-            Sobre el proyecto
+          <Link
+            href="/sobre-nosotros"
+            className={`text-sm ${
+              pathname === '/sobre-nosotros' ? 'font-bold' : ''
+            }`}
+          >
+            Sobre nosotros
           </Link>
           <a
             className="btn text-xs items-center"

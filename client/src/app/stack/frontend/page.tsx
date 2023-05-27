@@ -1,11 +1,11 @@
 'use client'
 
 import { getSkillsByStack } from '@/api/getSkillsByStack'
-import Footer from '@/components/footer/footer'
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import JobsSection from '@/components/job/jobs-section'
 import { Logo } from '@/components/logo'
+import { BarMostPopularSkills } from '@/components/tremor/BarMostPopularSkills'
 import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
 import { getTodayInSpanishFormat, wait } from '@/functions/utils'
 import { Stack } from '@/types/types'
@@ -15,7 +15,6 @@ import React, { useEffect, useState } from 'react'
 export default function Page() {
   const [skills, setSkills] = useState([])
   const [loading, setLoading] = useState<boolean>(true)
-  const router = useRouter()
   const pathname = usePathname()
   const stack = pathname.split('/').pop() as Stack
 
@@ -24,7 +23,6 @@ export default function Page() {
     const fetchData = async () => {
       try {
         const skillsData = await getSkillsByStack({ stack })
-        // console.log(skillsData)
         setSkills(skillsData)
         await wait(0.5)
         setLoading(false)
@@ -53,7 +51,7 @@ export default function Page() {
   return (
     <>
       <main className="flex flex-col items-center justify-center gap-12 pb-16">
-        <HeroGeneral icon="qwik" />
+        <HeroGeneral icon={stack} />
 
         <JobsSection
           title={`Últimas ofertas ${stack} a ${getTodayInSpanishFormat()}`}
@@ -166,40 +164,11 @@ export default function Page() {
           ]}
         />
 
-        {/* // Data in real time  */}
-        {skills ? (
-          <div className="container-wrapper">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center md:text-left">
-              ¿Qué es lo que más se demanda en el mundo {stack}?
-            </h2>
-
-            <dl className="flex flex-wrap my-12 gap-6">
-              {Object.entries(skills)
-                .slice(0, 5)
-                .map(([skill, level]) => (
-                  <React.Fragment key={skill}>
-                    <dt className="min-w-[50px] font-bold">{skill}:</dt>
-                    <dd className="ml-4 flex flex-1">{level}</dd>
-                  </React.Fragment>
-                ))}
-            </dl>
-          </div>
-        ) : null}
-
-        <div className="container-wrapper flex flex-col md:flex-row gap-2">
-          <button className="btn" type="button" onClick={() => router.back()}>
-            Volver a la página anterior
-          </button>
-          <button
-            className="btn"
-            type="button"
-            onClick={() => router.push('/')}
-          >
-            Volver a main
-          </button>
-        </div>
+        <BarMostPopularSkills
+          title={`Skills más demandadas dentro del mundo ${stack}`}
+          skills={skills}
+        />
       </main>
-      <Footer />
     </>
   )
 }

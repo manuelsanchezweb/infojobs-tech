@@ -15,13 +15,13 @@ export type Job = {
   title: string
   description: string
   company: string
-  location: string
+  city: string
   stack: Stack
-  technologies: Technology[] | string[]
+  skills: Technology[] | string[]
   url: string
   min_salary?: string
   max_salary?: string
-  created_at: string
+  createdAt: string
   remote?: boolean
   is_active?: boolean
 }

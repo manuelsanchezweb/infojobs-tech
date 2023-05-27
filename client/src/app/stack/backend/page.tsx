@@ -1,7 +1,6 @@
 'use client'
 
 import { getSkillsByStack } from '@/api/getSkillsByStack'
-import Footer from '@/components/footer/footer'
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import JobsSection from '@/components/job/jobs-section'
@@ -199,7 +198,6 @@ export default function Page() {
           </button>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

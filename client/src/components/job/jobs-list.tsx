@@ -5,7 +5,7 @@ import usePagination from '@/hooks/usePagination'
 import { filterJobsByStack } from '@/functions/functions'
 import { animate, stagger } from 'motion'
 
-const NUMBER_OF_JOBS_PER_PAGE = 6
+const NUMBER_OF_JOBS_PER_PAGE = 3
 
 export const JobsList = ({
   jobs,
@@ -15,9 +15,19 @@ export const JobsList = ({
   selectedStack: Stack | null
 }) => {
   const filteredJobs = useMemo(() => {
-    return selectedStack === null
-      ? jobs
-      : filterJobsByStack(jobs, selectedStack)
+    let filtered =
+      selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
+
+    // Now sort the filtered jobs
+    filtered = [...filtered].sort((a, b) => {
+      // If both jobs have the same active status, sort by date
+      // We assume that the created_at is in a format that can be used by Date
+      const dateA = new Date(a.createdAt)
+      const dateB = new Date(b.createdAt)
+      return dateB.getTime() - dateA.getTime() // Sort in descending order
+    })
+
+    return filtered
   }, [jobs, selectedStack])
 
   const initialState = {
@@ -43,26 +53,11 @@ export const JobsList = ({
     )
   }, [selectedStack, jobs])
 
-  const sortedJobs = useMemo(() => {
-    return [...filteredJobs].sort((a, b) => {
-      // First sort by active status (inactive jobs go to the end)
-      if (a.is_active !== b.is_active) {
-        return b.is_active ? 1 : -1
-      }
-
-      // If both jobs have the same active status, sort by date
-      // We assume that the created_at is in a format that can be used by Date
-      const dateA = new Date(a.created_at)
-      const dateB = new Date(b.created_at)
-      return dateB.getTime() - dateA.getTime() // Sort in descending order
-    })
-  }, [filteredJobs])
-
   const displayedJobsPaginated = useMemo(() => {
     const start = (state.currentPage - 1) * state.pageSize
     const end = state.currentPage * state.pageSize
-    return sortedJobs.slice(start, end)
-  }, [sortedJobs, state.currentPage, state.pageSize])
+    return filteredJobs.slice(start, end)
+  }, [filteredJobs, state.currentPage, state.pageSize])
 
   return (
     <>
@@ -85,14 +80,14 @@ export const JobsList = ({
             disabled={isPrevDisabled}
             className="disabled:text-gray-300 disabled:pointer-events-none"
           >
-            Previous page
+            Ofertas anteriores
           </button>
           <button
             onClick={actions.nextPage}
             disabled={isNextDisabled}
             className="disabled:text-gray-300 disabled:pointer-events-none"
           >
-            Next page
+            Siguientes ofertas
           </button>
         </div>
       </div>

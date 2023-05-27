@@ -1,7 +1,6 @@
 import { getJobById } from '@/api/getJobById'
 import HeroGeneral from '@/components/hero/hero-general'
 import { Logo } from '@/components/logo'
-import Footer from '@/components/footer/footer'
 import Link from 'next/link'
 
 async function getJobData(id: string) {
@@ -36,10 +35,6 @@ export default async function Page({ params }: { params: { jobId: string } }) {
           <h1 className="text-3xl md:text-5xl font-bold self-start">
             This is the id of the job offer: {job.id}
           </h1>
-          <h2>
-            Pero estamos prototipando, así que le hacemos fetch a uno que
-            conocemos:
-          </h2>
 
           <br />
           <h3>{job?.title}</h3>
@@ -74,7 +69,6 @@ export default async function Page({ params }: { params: { jobId: string } }) {
           </Link>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

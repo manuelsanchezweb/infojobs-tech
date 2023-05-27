@@ -10,7 +10,7 @@ import {
 import { getJobsData } from '@/api/getJobsData'
 
 const JobsSalarySection = ({ title }: { title?: string }) => {
-  const [jobs, setJobs] = useState<Job[]>([])
+  const [jobs, setJobs] = useState<Job[] | null>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,12 +25,14 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
     fetchData()
   }, [])
 
+  if (!jobs) return
+
   const averageSalariesByStack = calculateAverageSalariesByStack(jobs)
-  const averageSalariesByStackArray = Object.entries(
-    averageSalariesByStack
-  ).map(([stack, avgSalary]) => {
-    return { stack, avgSalary }
-  })
+  const averageSalariesByStackArray = Object.entries(averageSalariesByStack)
+    .map(([stack, avgSalary]) => {
+      return { stack, avgSalary }
+    })
+    .filter((item) => item.stack !== 'otro')
 
   const getColorByIndex = (index: number) => {
     const colors = ['slate', 'violet', 'indigo', 'rose', 'cyan', 'amber']
@@ -66,8 +68,8 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
         ))}
       </ul>
 
-      <Card className="max-w-lg">
-        <Title>Cifras actualizadas a {getTodayInSpanishFormat()}</Title>
+      <Card className="w-full">
+        <Title>Comparativa de salarios a día {getTodayInSpanishFormat()}</Title>
         <DonutChart
           className="mt-6 text-sm"
           data={averageSalariesByStackArray}

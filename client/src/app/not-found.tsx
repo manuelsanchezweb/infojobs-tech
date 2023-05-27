@@ -1,8 +1,6 @@
-import Footer from '@/components/footer/footer'
 import HeroGeneral from '@/components/hero/hero-general'
 import { IconSwitcher } from '@/components/icons/IconSwitcher'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
-import Link from 'next/link'
 
 export default function NotFound() {
   return (
@@ -113,8 +111,6 @@ export default function NotFound() {
           ],
         }}
       />
-
-      <Footer />
     </main>
   )
 }

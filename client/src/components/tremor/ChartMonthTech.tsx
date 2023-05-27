@@ -28,7 +28,7 @@ export const ChartMonthTech = ({
   data: ChartData[]
   title?: string
 }) => (
-  <Card className="my-24 container-wrapper">
+  <Card className="my-4 container-wrapper">
     <Title>{title}</Title>
     <AreaChart
       className="h-72 mt-4"

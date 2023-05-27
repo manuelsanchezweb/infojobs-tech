@@ -1,13 +1,41 @@
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
-import Jobs from '@/components/job/jobs'
 export default function Home() {
   return (
     <>
       <main className="flex flex-col items-center justify-center gap-12 pb-8">
         <HeroGeneral />
 
-        <Jobs />
+        <div className="container-wrapper flex flex-col gap-4">
+          <h1 className="text-3xl md:text-5xl font-bold self-start mb-4">
+            Sobre nosotros
+          </h1>
+
+          <p>
+            <strong>InfoJobs Tech</strong> es la propuesta de valor para
+            InfoJobs de 2 desarrolladores españoles.
+          </p>
+          <p>
+            InfoJobs Tech pretende atraer talento a través de una interfaz que
+            hace sentir al desarrollador como en casa.
+          </p>
+          <p>
+            Las ofertas hablan su idioma:{' '}
+            <strong>
+              están clasificadas a través de IA por stacks tecnológicos
+            </strong>{' '}
+            y puede verse a vista de pájaro{' '}
+            <strong>qué están demandando las empresas en tiempo real</strong>.
+          </p>
+          <p>
+            Con esta propuesta{' '}
+            <strong>
+              pretendemos inyectar aire fresco en la plataforma líder del
+              mercado
+            </strong>{' '}
+            con una propuesta que la acerca al talento tecnológico .
+          </p>
+        </div>
 
         <InteractiveElement
           data={{
