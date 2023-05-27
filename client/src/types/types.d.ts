@@ -155,4 +155,5 @@ export interface JobSpecific {
   availableForVisualization: boolean
   skillsList: Skill[]
   salaryDescription: string
+  error?: string
 }

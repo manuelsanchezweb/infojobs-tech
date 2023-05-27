@@ -1,4 +1,5 @@
 import { getJobById } from '@/api/getJobById'
+import NotFound from '@/app/not-found'
 import HeroGeneral from '@/components/hero/hero-general'
 import { Logo } from '@/components/logo'
 import Link from 'next/link'
@@ -15,16 +16,8 @@ async function getJobData(id: string) {
 export default async function Page({ params }: { params: { jobId: string } }) {
   const job = await getJobData(params.jobId)
 
-  if (!job) {
-    return (
-      <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-full m-auto justify-center items-center bg-white z-10 px-4">
-        <Logo customClass="text-primary w-48 h-auto" />
-        <p className="text-xl font-bold text-center max-w-[600px]">
-          El sector IT en España es como un gran código en constante evolución.
-          ¡Estás a un commit de ser parte de él!
-        </p>
-      </div>
-    )
+  if (!job || job?.error) {
+    return <NotFound />
   }
 
   return (
@@ -34,11 +27,11 @@ export default async function Page({ params }: { params: { jobId: string } }) {
         <div className="container-wrapper">
           <div className="mb-12">
             <h1 className="text-3xl md:text-5xl font-bold self-start mb-2">
-              {job.title}
+              {job?.title}
             </h1>
             <p>
               {' '}
-              <strong>Lugar:</strong> {job?.city}, {job?.country.value}
+              <strong>Lugar:</strong> {job?.city}, {job?.country?.value}
             </p>
             <small>
               Id: <i>{job.id}</i>
