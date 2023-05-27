@@ -10,13 +10,13 @@ import {
 import { getJobsData } from '@/api/getJobsData'
 
 const JobsSalarySection = ({ title }: { title?: string }) => {
-  const [jobs, setJobs] = useState<Job[] | null>([])
+  const [jobs, setJobs] = useState<Job[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const jobsData = await getJobsData()
-        setJobs(jobsData)
+        setJobs(jobsData || [])
       } catch (error) {
         console.log(error)
       }
@@ -24,8 +24,6 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
 
     fetchData()
   }, [])
-
-  if (!jobs) return
 
   const averageSalariesByStack = calculateAverageSalariesByStack(jobs)
   const averageSalariesByStackArray = Object.entries(averageSalariesByStack)

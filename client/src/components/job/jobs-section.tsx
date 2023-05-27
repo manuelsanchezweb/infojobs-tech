@@ -20,7 +20,7 @@ const JobsSection = ({
   const [selectedStack, setSelectedStack] = useState<Stack | null>(
     stack || null
   )
-  const [jobs, setJobs] = useState<Job[] | null>([])
+  const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const JobsSection = ({
     const fetchData = async () => {
       try {
         const jobsData = await getJobsData()
-        setJobs(jobsData)
+        setJobs(jobsData || [])
         await wait(0.5)
         setLoading(false)
       } catch (error) {

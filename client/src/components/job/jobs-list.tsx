@@ -11,11 +11,9 @@ export const JobsList = ({
   jobs,
   selectedStack,
 }: {
-  jobs: Job[] | null
+  jobs: Job[]
   selectedStack: Stack | null
 }) => {
-  if (!jobs) return null
-
   const filteredJobs = useMemo(() => {
     let filtered =
       selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
