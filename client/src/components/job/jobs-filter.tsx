@@ -1,6 +1,6 @@
 import { getAllStacks } from '@/functions/functions'
 import { Job, Stack } from '@/types/types'
-import React from 'react'
+import { IconSwitcher } from '../icons/IconSwitcher'
 
 type JobsFilterProps = {
   jobs: Job[] | null
@@ -29,17 +29,23 @@ const JobsFilter = ({
       >
         Todos
       </button>
-      {getAllStacks(jobs).map((stack, index) => (
-        <button
-          className={`${
-            selectedStack === stack ? 'bg-primary text-white' : ''
-          } flex gap-2 py-2 px-4 rounded-md border border-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
-          key={index}
-          onClick={() => handleStackClick(stack)}
-        >
-          {stack}
-        </button>
-      ))}
+      {getAllStacks(jobs)
+        .filter((stack) => stack !== 'otro')
+        .sort()
+        .map((stack, index) => (
+          <button
+            className={`${
+              selectedStack === stack
+                ? 'bg-primary text-white hover:bg-primary focus:bg-primary border-primaryDark active:bg-primary'
+                : ''
+            } flex items-center gap-2 py-2 px-4 rounded-md border border-primary hover:bg-primary hover:text-white focus:bg-primary focus:text-white`}
+            key={index}
+            onClick={() => handleStackClick(stack)}
+          >
+            <IconSwitcher classCustom="w-6 h-auto" icon={stack} />
+            {stack}
+          </button>
+        ))}
     </div>
   )
 }

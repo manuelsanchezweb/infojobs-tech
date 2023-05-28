@@ -1,5 +1,7 @@
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
+import Image from 'next/image'
+
 export default function Home() {
   return (
     <>
@@ -11,30 +13,54 @@ export default function Home() {
             Sobre nosotros
           </h1>
 
-          <p>
-            <strong>InfoJobs Tech</strong> es la propuesta de valor para
-            InfoJobs de 2 desarrolladores españoles.
-          </p>
-          <p>
-            InfoJobs Tech pretende atraer talento a través de una interfaz que
-            hace sentir al desarrollador como en casa.
-          </p>
-          <p>
-            Las ofertas hablan su idioma:{' '}
-            <strong>
-              están clasificadas a través de IA por stacks tecnológicos
-            </strong>{' '}
-            y puede verse a vista de pájaro{' '}
-            <strong>qué están demandando las empresas en tiempo real</strong>.
-          </p>
-          <p>
-            Con esta propuesta{' '}
-            <strong>
-              pretendemos inyectar aire fresco en la plataforma líder del
-              mercado
-            </strong>{' '}
-            con una propuesta que la acerca al talento tecnológico .
-          </p>
+          <div className="flex flex-col md:flex-row gap-8 my-8">
+            <div className="flex flex-col gap-4 text-lg">
+              <p>
+                <strong>InfoJobs Tech</strong> es la propuesta de valor para
+                InfoJobs de 2 desarrolladores españoles.
+              </p>
+              <p>
+                InfoJobs Tech pretende atraer talento a través de una interfaz
+                que hace sentir al desarrollador como en casa.
+              </p>
+            </div>
+            <Image
+              width={440}
+              height={220}
+              src="/img-remoteworking.png"
+              alt="Talento tecnológico"
+            />
+          </div>
+
+          <div className="flex flex-col md:flex-row-reverse gap-8 my-8">
+            <div className="flex flex-col gap-4 text-lg">
+              <p>
+                Las ofertas hablan su idioma:{' '}
+                <strong>
+                  están clasificadas a través de IA por stacks tecnológicos
+                </strong>{' '}
+                y puede verse a vista de pájaro{' '}
+                <strong>
+                  qué están demandando las empresas en tiempo real
+                </strong>
+                .
+              </p>
+              <p>
+                Con esta propuesta{' '}
+                <strong>
+                  pretendemos inyectar aire fresco en la plataforma líder del
+                  mercado
+                </strong>{' '}
+                con una propuesta que la acerca al talento tecnológico .
+              </p>
+            </div>
+            <Image
+              width={440}
+              height={220}
+              src="/img-orientation.png"
+              alt="Talento tecnológico"
+            />
+          </div>
         </div>
 
         <InteractiveElement

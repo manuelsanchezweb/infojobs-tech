@@ -1,6 +1,9 @@
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import Jobs from '@/components/job/jobs'
+import JobsSalarySection from '@/components/job/jobs-salary-section'
+import JobsSection from '@/components/job/jobs-section'
+import { getTodayInSpanishFormat } from '@/functions/utils'
 
 export default function Home() {
   return (
@@ -8,7 +11,10 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center gap-12 pb-8">
         <HeroGeneral />
 
-        <Jobs />
+        <JobsSection
+          showFilters
+          title={`Últimas ofertas a ${getTodayInSpanishFormat()}`}
+        />
 
         <InteractiveElement
           data={{
@@ -95,6 +101,8 @@ export default function Home() {
             ],
           }}
         />
+
+        <JobsSalarySection />
       </main>
     </>
   )

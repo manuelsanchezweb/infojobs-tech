@@ -17,13 +17,12 @@ export function firstLetterUppercase(word: string): string {
   return word.charAt(0).toUpperCase() + word.slice(1)
 }
 
-export function getTodayInSpanishFormat(): string {
+export function getTodayInSpanishFormat(showYear?: boolean): string {
   const date = new Date()
   const day = date.getDate().toString().padStart(2, '0')
   const month = MONTH_NAMES[date.getMonth()]
-  const year = date.getFullYear()
 
-  return `${day} de ${month} de ${year}`
+  return `${day} de ${month}${showYear ? ` de ${date.getFullYear()}` : ''}`
 }
 
 export function convertDateToStandardFormat(input: string): string {

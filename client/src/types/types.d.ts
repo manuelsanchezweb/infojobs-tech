@@ -5,6 +5,7 @@ export type Stack =
   | 'mobile'
   | 'devops'
   | 'data'
+  | 'otro'
 
 export type Technology = 'react' | 'vue' | 'qwik' | 'angular' | 'svelte'
 export type Illustrations = 'error'

@@ -1,3 +1,5 @@
+'use client'
+
 import { calculateAverageSalariesByStack } from '@/functions/functions'
 import { Card, Title, DonutChart } from '@tremor/react'
 import { GraphColors, Job } from '@/types/types'

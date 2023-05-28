@@ -45,6 +45,7 @@ export const JobsList = ({
   useEffect(() => {
     const li = document.querySelectorAll('.job-card')
     if (!li[0]) return
+    actions.jumpToPage(1)
 
     animate(
       li,
