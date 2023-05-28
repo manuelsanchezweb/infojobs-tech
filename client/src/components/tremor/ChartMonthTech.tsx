@@ -13,7 +13,9 @@ type Technology =
   | 'Vue'
   | 'PHP'
   | 'Python'
-  | 'Node' // TODO: let us write here all the possibilities
+  | 'Node'
+  | 'JavaScript'
+  | 'Dart'
 
 type ChartData = {
   date: string
@@ -34,8 +36,8 @@ export const ChartMonthTech = ({
       className="h-72 mt-4"
       data={data}
       index="date"
-      categories={['React', 'Qwik', 'Angular', 'Vue']}
-      colors={['blue', 'purple', 'red', 'green']}
+      categories={['Python', 'React', 'JavaScript', 'Qwik', 'PHP', 'Dart']}
+      colors={['blue', 'purple', 'red', 'green', 'amber', 'cyan']}
       valueFormatter={dataFormatter}
     />
   </Card>

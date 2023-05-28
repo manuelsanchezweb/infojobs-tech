@@ -5,26 +5,23 @@ import usePagination from '@/hooks/usePagination'
 import { filterJobsByStack } from '@/functions/functions'
 import { animate, stagger } from 'motion'
 
-const NUMBER_OF_JOBS_PER_PAGE = 3
-
 export const JobsList = ({
   jobs,
   selectedStack,
+  numberOfJobsPerPage,
 }: {
   jobs: Job[]
   selectedStack: Stack | null
+  numberOfJobsPerPage?: number
 }) => {
   const filteredJobs = useMemo(() => {
     let filtered =
       selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
 
-    // Now sort the filtered jobs
     filtered = [...filtered].sort((a, b) => {
-      // If both jobs have the same active status, sort by date
-      // We assume that the created_at is in a format that can be used by Date
       const dateA = new Date(a.createdAt)
       const dateB = new Date(b.createdAt)
-      return dateB.getTime() - dateA.getTime() // Sort in descending order
+      return dateB.getTime() - dateA.getTime()
     })
 
     return filtered
@@ -32,7 +29,7 @@ export const JobsList = ({
 
   const initialState = {
     currentPage: 1,
-    pageSize: NUMBER_OF_JOBS_PER_PAGE,
+    pageSize: numberOfJobsPerPage || 6,
     total: filteredJobs.length,
   }
   const [state, actions] = usePagination(initialState)
@@ -64,8 +61,8 @@ export const JobsList = ({
     <>
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
         {displayedJobsPaginated.length > 0 ? (
-          displayedJobsPaginated.map((job) => (
-            <JobCard key={job.id} job={job} />
+          displayedJobsPaginated.map((job, index) => (
+            <JobCard key={job.id - index} job={job} />
           ))
         ) : (
           <p>

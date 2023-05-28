@@ -12,10 +12,12 @@ const JobsSection = ({
   showFilters,
   stack,
   title,
+  numberOfJobsPerPage,
 }: {
   showFilters?: boolean
   stack?: Stack
   title?: string
+  numberOfJobsPerPage?: number
 }) => {
   const [selectedStack, setSelectedStack] = useState<Stack | null>(
     stack || null
@@ -65,7 +67,11 @@ const JobsSection = ({
           jobs={jobs}
         />
       )}
-      <JobsList jobs={jobs} selectedStack={selectedStack} />
+      <JobsList
+        numberOfJobsPerPage={numberOfJobsPerPage}
+        jobs={jobs}
+        selectedStack={selectedStack}
+      />
     </section>
   )
 }

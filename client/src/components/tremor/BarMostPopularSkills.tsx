@@ -12,10 +12,12 @@ const dataFormatter = (number: number) => {
 }
 
 function transformDictionary(dict: Record<string, number>): SkillsEntry[] {
-  return Object.entries(dict).map(([name, count]) => ({
-    name: name.trim(), // trim() is used to remove leading and trailing whitespace
-    'Skills más demandadas': count,
-  }))
+  return Object.entries(dict)
+    .slice(0, 25)
+    .map(([name, count]) => ({
+      name: name.trim(),
+      'Skills más demandadas': count,
+    }))
 }
 
 export const BarMostPopularSkills = ({

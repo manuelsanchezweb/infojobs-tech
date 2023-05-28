@@ -40,7 +40,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/frontend',
+                url: '/stacks/frontend',
               },
             },
             {
@@ -53,7 +53,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/backend',
+                url: '/stacks/backend',
               },
             },
             {
@@ -66,7 +66,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/fullstack',
+                url: '/stacks/fullstack',
               },
             },
             {
@@ -79,7 +79,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/mobile',
+                url: '/stacks/mobile',
               },
             },
             {
@@ -92,7 +92,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/data',
+                url: '/stacks/data',
               },
             },
             {
@@ -105,7 +105,7 @@ export default function NotFound() {
               cta: {
                 label: 'Descubre más',
                 intern: true,
-                url: '/stack/devops',
+                url: '/stacks/devops',
               },
             },
           ],

@@ -1,6 +1,5 @@
 import HeroGeneral from '@/components/hero/hero-general'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
-import Jobs from '@/components/job/jobs'
 import JobsSalarySection from '@/components/job/jobs-salary-section'
 import JobsSection from '@/components/job/jobs-section'
 import { getTodayInSpanishFormat } from '@/functions/utils'
@@ -30,7 +29,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/frontend',
+                  url: '/stacks/frontend',
                 },
               },
               {
@@ -43,7 +42,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/backend',
+                  url: '/stacks/backend',
                 },
               },
               {
@@ -56,7 +55,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/fullstack',
+                  url: '/stacks/fullstack',
                 },
               },
               {
@@ -69,7 +68,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/mobile',
+                  url: '/stacks/mobile',
                 },
               },
               {
@@ -82,7 +81,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/data',
+                  url: '/stacks/data',
                 },
               },
               {
@@ -95,7 +94,7 @@ export default function Home() {
                 cta: {
                   label: 'Descubre más',
                   intern: true,
-                  url: '/stack/devops',
+                  url: '/stacks/devops',
                 },
               },
             ],

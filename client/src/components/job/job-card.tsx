@@ -5,7 +5,7 @@ import React from 'react'
 
 export const JobCard = ({ job }: { job: Job }) => {
   return (
-    <li className="job-card flex flex-col items-start justify-start gap-2 border border-primaryDark p-5 rounded-sm md:min-h-[280px]">
+    <li className="job-card flex flex-col items-start justify-start gap-2 border border-primaryDark p-5 rounded-sm md:min-h-[310px]">
       <h2
         className="font-bold text-md max-w-[250px] line-clamp-2"
         title={job.title}
