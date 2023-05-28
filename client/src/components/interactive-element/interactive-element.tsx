@@ -69,7 +69,7 @@ export default function InteractiveElement({
   }, [])
 
   return (
-    <section className="w-full container-wrapper">
+    <section className="w-full">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 my-12 md:my-2 min-h-[20vh] md:min-h-[35vh]">
         {!viewSelected ? (
           <>
