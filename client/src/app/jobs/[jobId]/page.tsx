@@ -1,6 +1,7 @@
 import { getJobById } from '@/api/getJobById'
 import NotFound from '@/app/not-found'
 import HeroGeneral from '@/components/hero/hero-general'
+import { ConnectionError } from '@/functions/errors'
 import { convertDateToStandardFormat } from '@/functions/utils'
 
 async function getJobData(id: string) {
@@ -8,16 +9,20 @@ async function getJobData(id: string) {
     const data = await getJobById({ jobId: id })
     return data
   } catch (error) {
-    console.log(error)
+    throw new ConnectionError('There was an issue with the fetch of the jobId')
   }
 }
 
 export default async function Page({ params }: { params: { jobId: string } }) {
   const job = await getJobData(params.jobId)
+  console.log(job)
 
   if (!job || job?.error) {
     return <NotFound />
   }
+
+  const jobDescription = job?.description.split('\n').filter((p) => p)
+  const minRequirements = job?.minRequirements.split('\n').filter((p) => p)
 
   return (
     <>
@@ -36,6 +41,11 @@ export default async function Page({ params }: { params: { jobId: string } }) {
               <p>
                 <strong>Fecha de publicación:</strong>{' '}
                 {convertDateToStandardFormat(job.creationDate)}
+              </p>
+            )}
+            {job.profile.name && (
+              <p>
+                <strong>Empresa:</strong> {job.profile.name}
               </p>
             )}
             <small>
@@ -59,7 +69,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                 </div>
               )}
 
-              {job.skillsList && (
+              {job.skillsList.length > 0 && (
                 <div className="flex flex-col gap-2 mb-8">
                   <h3 className="font-bold text-xl">
                     Conocimientos que buscan:
@@ -74,6 +84,13 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                       </span>
                     ))}
                   </div>
+                </div>
+              )}
+
+              {job.teleworking && (
+                <div className="flex flex-wrap mb-8 items-center gap-2">
+                  <h3 className="font-bold text-xl">Modalidad de trabajo:</h3>
+                  <p>{job.teleworking.value}</p>
                 </div>
               )}
 
@@ -115,7 +132,11 @@ export default async function Page({ params }: { params: { jobId: string } }) {
               {job.minRequirements && (
                 <div className="flex flex-wrap mb-8 items-center gap-2">
                   <h3 className="font-bold text-xl">Requisitos mínimos:</h3>
-                  <p>{job.minRequirements}</p>
+                  {minRequirements.map((paragraph, index) => (
+                    <p className="my-2" key={index}>
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               )}
 
@@ -137,7 +158,13 @@ export default async function Page({ params }: { params: { jobId: string } }) {
 
               <div className="flex flex-col">
                 <h2 className="font-bold text-xl">Descripción de la oferta:</h2>
-                <p>{job.description}</p>
+                <div>
+                  {jobDescription.map((paragraph, index) => (
+                    <p className="my-2" key={index}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
               </div>
 
               <a
@@ -150,23 +177,69 @@ export default async function Page({ params }: { params: { jobId: string } }) {
             </div>
 
             {/* // Extra info and apply  */}
-            <div>
-              <div className="flex flex-wrap mb-2 items-center gap-2">
-                <h3 className="font-bold text-xl">Solicitudes:</h3>
-                <p>{job.applications}</p>
-              </div>
-
-              {job.vacancies && (
-                <div className="flex flex-wrap mb-4 items-center gap-2">
-                  <h3 className="font-bold text-xl">Vacantes:</h3>
-                  <p>{job.vacancies}</p>
-                </div>
-              )}
+            <div className="md:max-w-[300px]">
               <div className="bg-primaryTransparent min-w-[300px] p-6 border border-black flex flex-col gap-4 text-center items-center">
                 <p className="text-white">¿Te interesa? Aplica aquí</p>
-                <a className="btn" href={job?.link} title="Aplicar a la oferta">
+                <a
+                  className="btn"
+                  href={job?.link}
+                  target="_blank"
+                  title="Aplicar a la oferta"
+                >
                   Link de la oferta
                 </a>
+              </div>
+
+              <div className="flex flex-col my-8 border-t border-primary">
+                <h2 className="font-bold text-xl self-center py-4">
+                  Sobre {job.profile.name}
+                </h2>
+
+                {job.profile.logoUrl && (
+                  <a
+                    target="_blank"
+                    className="flex hover:scale-105 focus:scale-105 transition-transform justify-center"
+                    href={job.profile.url}
+                    title={job.profile.name}
+                  >
+                    <img
+                      width="50%"
+                      height="auto"
+                      src={job.profile.logoUrl}
+                      alt={job.profile.name}
+                      title={job.profile.name}
+                      className="my-4 self-center"
+                    />
+                  </a>
+                )}
+                {job.profile.numberWorkers && (
+                  <p className="my-2">
+                    <strong>Número de trabajadores:</strong>{' '}
+                    {job.profile.numberWorkers}
+                  </p>
+                )}
+                {job.profile.description && <p>{job.profile.description}</p>}
+                <a
+                  className="btn mt-8"
+                  href={job.profile.url}
+                  title="Aplicar a la oferta"
+                  target="_blank"
+                >
+                  Ver más de la compañía
+                </a>
+              </div>
+              <div>
+                <div className="flex flex-wrap mt-8 py-4 border-t border-primary items-center gap-2">
+                  <div className="font-bold text-xl">Solicitudes:</div>
+                  <p>{job.applications}</p>
+                </div>
+
+                {job.vacancies && (
+                  <div className="flex flex-wrap mb-4 items-center gap-2">
+                    <div className="font-bold text-xl">Vacantes:</div>
+                    <p>{job.vacancies}</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

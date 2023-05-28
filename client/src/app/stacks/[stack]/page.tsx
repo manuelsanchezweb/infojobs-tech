@@ -8,6 +8,7 @@ import { getTodayInSpanishFormat } from '@/functions/utils'
 import { Stack } from '@/types/types'
 import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
 import { BarMostPopularSkills } from '@/components/tremor/BarMostPopularSkills'
+import { ConnectionError } from '@/functions/errors'
 
 const validStacks: Stack[] = [
   'frontend',
@@ -29,7 +30,7 @@ async function getStackData(stack: any) {
     const data = await getSkillsByStack({ stack })
     return data
   } catch (error) {
-    console.log(error)
+    throw new ConnectionError('There was an issue with the fetch of the stack')
   }
 }
 

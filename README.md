@@ -10,9 +10,9 @@ No te asustes, estamos trabajando duro por [aquí](https://infojobs-tech.vercel.
 
 - [x] Crear footer
 - [ ] Añadir poss de filtro
-- [ ] Añadir icons para el stack
-- [ ] Hacer dinámico el fetch del stack
-- [ ] Hacer fetch desde el servidor (stack)
+- [x] Añadir icons para el stack
+- [x] Hacer dinámico el fetch del stack
+- [x] Hacer fetch desde el servidor (stack)
 - [x] Hacer fetch desde el servidor (id)
 
 ## 📧 Contacto

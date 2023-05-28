@@ -7,6 +7,7 @@ import { JobsList } from './jobs-list'
 import { getTodayInSpanishFormat } from '@/functions/utils'
 import { Logo } from '../logo'
 import { getJobsData } from '@/api/getJobsData'
+import { ConnectionError } from '@/functions/errors'
 
 const JobsSection = ({
   showFilters,
@@ -33,7 +34,9 @@ const JobsSection = ({
         setJobs(jobsData || [])
         setLoading(false)
       } catch (error) {
-        console.log(error)
+        throw new ConnectionError(
+          'There was an issue with the fetch of the jobs'
+        )
       }
 
       document.body.classList.remove('overflow-hidden')

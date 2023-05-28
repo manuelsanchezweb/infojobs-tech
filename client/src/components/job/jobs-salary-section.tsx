@@ -10,6 +10,7 @@ import {
   valueFormatter,
 } from '@/functions/utils'
 import { getJobsData } from '@/api/getJobsData'
+import { ConnectionError } from '@/functions/errors'
 
 const JobsSalarySection = ({ title }: { title?: string }) => {
   const [jobs, setJobs] = useState<Job[]>([])
@@ -20,7 +21,9 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
         const jobsData = await getJobsData()
         setJobs(jobsData || [])
       } catch (error) {
-        console.log(error)
+        throw new ConnectionError(
+          'There was an issue with the fetch of the jobsdata in the salary section'
+        )
       }
     }
 

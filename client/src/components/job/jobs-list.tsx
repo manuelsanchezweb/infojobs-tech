@@ -62,7 +62,7 @@ export const JobsList = ({
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
         {displayedJobsPaginated.length > 0 ? (
           displayedJobsPaginated.map((job, index) => (
-            <JobCard key={job.id - index} job={job} />
+            <JobCard key={`${job.id}_${index}`} job={job} />
           ))
         ) : (
           <p>

@@ -158,4 +158,5 @@ export interface JobSpecific {
   salaryDescription: string
   error?: string
   stack: Stack
+  teleworking: KeyValue
 }
