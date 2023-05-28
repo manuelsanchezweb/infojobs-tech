@@ -10,8 +10,9 @@ const HeroGeneral = ({ icon }: { icon?: Stack | Technology }) => {
     <div
       className="flex flex-col items-center justify-center relative border-b border-primaryDark mb-12"
       style={{
-        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0)), url('/bg-home-full-tv.jpg')`,
+        backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)), url('/bg-home-full-tv.jpg')`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center',
         width: '100%',
         height: '350px',
       }}

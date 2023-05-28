@@ -6,20 +6,23 @@ import {
   IconDevOps,
   IconFrontend,
   IconFullStack,
+  IconLinkedin,
+  IconMessage,
   IconMobile,
   IconQwik,
   IconReact,
   IconVue,
+  IconWeb,
 } from './Icons'
 import { IllustrationError } from './illustrations'
 
 type IconSwitcherProps = {
-  icon: Technology | Stack | Illustrations
+  icon: Technology | Stack | Illustrations | string
   classCustom?: string
 }
 
 export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
-  function renderIcon(icon: Technology | Stack | Illustrations) {
+  function renderIcon(icon: Technology | Stack | Illustrations | string) {
     switch (icon) {
       case 'react':
         return <IconReact classCustom={classCustom} />
@@ -43,6 +46,12 @@ export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
         return <IconDevOps classCustom={classCustom} />
       case 'mobile':
         return <IconMobile classCustom={classCustom} />
+      case 'web':
+        return <IconWeb classCustom={classCustom} />
+      case 'message':
+        return <IconMessage classCustom={classCustom} />
+      case 'linkedin':
+        return <IconLinkedin classCustom={classCustom} />
 
       default:
         return <IconFullStack classCustom={classCustom} />

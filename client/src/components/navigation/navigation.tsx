@@ -118,10 +118,9 @@ const HeroLogo = () => {
   return (
     <Link
       href="/"
-      className="flex flex-col justify-end items-end hover:no-underline focus:no-underline"
+      className="flex flex-col justify-end hover:scale-105 focus:scale-105 transition-transform items-end hover:no-underline focus:no-underline"
     >
       <Logo customClass="text-primary w-32 h-auto" />
-      <small className="font-bold italic text-xs">Tech</small>
     </Link>
   )
 }

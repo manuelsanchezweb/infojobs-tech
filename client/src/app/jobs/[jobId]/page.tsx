@@ -1,5 +1,6 @@
 import { getJobById } from '@/api/getJobById'
 import NotFound from '@/app/not-found'
+import BackButton from '@/components/back-button/back-button'
 import HeroGeneral from '@/components/hero/hero-general'
 import { ConnectionError } from '@/functions/errors'
 import { convertDateToStandardFormat } from '@/functions/utils'
@@ -15,7 +16,6 @@ async function getJobData(id: string) {
 
 export default async function Page({ params }: { params: { jobId: string } }) {
   const job = await getJobData(params.jobId)
-  console.log(job)
 
   if (!job || job?.error) {
     return <NotFound />
@@ -29,6 +29,8 @@ export default async function Page({ params }: { params: { jobId: string } }) {
       <main className="flex flex-col items-center justify-center gap-12 pb-16">
         <HeroGeneral icon={job?.stack} />
         <div className="container-wrapper">
+          <BackButton classCustom="w-fit my-6" />
+
           <div className="mb-12">
             <h1 className="text-3xl md:text-4xl font-bold self-start mb-2 max-w-[612px]">
               {job?.title}
@@ -57,7 +59,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
             Información de la oferta
           </h2>
 
-          <div className="two-col flex flex-col md:flex-row gap-12 justify-between md:text-justify">
+          <div className="two-col flex flex-col md:flex-row gap-12 justify-between">
             {/* // General info  */}
             <div>
               {job.subcategory && (
@@ -74,7 +76,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                   <h3 className="font-bold text-xl">
                     Conocimientos que buscan:
                   </h3>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {job?.skillsList.map((skill) => (
                       <span
                         className="flex bg-gray-200 rounded-full border px-3 py-1 text-[8px] flex-nowrap font-semibold text-gray-700"
@@ -203,12 +205,12 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                     title={job.profile.name}
                   >
                     <img
-                      width="50%"
-                      height="auto"
+                      width="auto"
+                      height="200px"
                       src={job.profile.logoUrl}
                       alt={job.profile.name}
                       title={job.profile.name}
-                      className="my-4 self-center"
+                      className="my-4 self-center max-h-[200px]"
                     />
                   </a>
                 )}

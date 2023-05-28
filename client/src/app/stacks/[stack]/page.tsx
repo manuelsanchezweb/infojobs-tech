@@ -9,6 +9,7 @@ import { Stack } from '@/types/types'
 import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
 import { BarMostPopularSkills } from '@/components/tremor/BarMostPopularSkills'
 import { ConnectionError } from '@/functions/errors'
+import BackButton from '@/components/back-button/back-button'
 
 const validStacks: Stack[] = [
   'frontend',
@@ -38,9 +39,11 @@ export default async function Page({ params }: { params: { stack: any } }) {
   const skills = await getStackData(params.stack)
 
   return (
-    <>
-      <main className="flex flex-col items-center justify-center gap-12 pb-16">
-        <HeroGeneral icon={params.stack} />
+    <main className="flex flex-col gap-12 pb-16">
+      <HeroGeneral icon={params.stack} />
+
+      <div className="container-wrapper">
+        <BackButton classCustom="w-fit my-6" />
 
         <JobsSection
           title={`Últimas ofertas ${
@@ -106,7 +109,7 @@ export default async function Page({ params }: { params: { stack: any } }) {
             },
           ]}
         />
-      </main>
-    </>
+      </div>
+    </main>
   )
 }
