@@ -117,6 +117,7 @@ export default Navigation
 const HeroLogo = () => {
   return (
     <Link
+      title="Logo"
       href="/"
       className="flex flex-col justify-end hover:scale-105 focus:scale-105 transition-transform items-end hover:no-underline focus:no-underline"
     >

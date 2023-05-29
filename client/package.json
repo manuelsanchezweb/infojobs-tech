@@ -1,7 +1,13 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "infojobs-tech",
+  "version": "1.0.0",
   "private": true,
+  "description": "El portal de empleo ahora en la especialidad de IT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuelsanchezweb/infojobs-tech.git"
+  },
+  "homepage": "https://github.com/manuelsanchezweb/infojobs-tech#readme",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

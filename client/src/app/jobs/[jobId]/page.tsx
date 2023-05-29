@@ -217,14 +217,16 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                     href={job.profile.url}
                     title={job.profile.name}
                   >
-                    <img
-                      width="auto"
-                      height="200px"
-                      src={job.profile.logoUrl}
-                      alt={job.profile.name}
-                      title={job.profile.name}
-                      className="my-4 self-center max-h-[200px]"
-                    />
+                    <picture>
+                      <img
+                        width="auto"
+                        height="200px"
+                        src={job.profile.logoUrl}
+                        alt={job.profile.name}
+                        title={job.profile.name}
+                        className="my-4 self-center max-h-[200px]"
+                      />
+                    </picture>
                   </a>
                 )}
                 {job.profile.numberWorkers && (
