@@ -4,6 +4,7 @@ import { JobCard } from './job-card'
 import usePagination from '@/hooks/usePagination'
 import { filterJobsByStack } from '@/functions/functions'
 import { animate, stagger } from 'motion'
+import { STACKS } from '@/constants/constants'
 
 type JobsListProps = {
   jobs: Job[]
@@ -21,6 +22,9 @@ export const JobsList = ({
       selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
 
     filtered = [...filtered].sort((a, b) => {
+      if (a.stack === STACKS.OTHER && b.stack !== STACKS.OTHER) return 1
+      if (b.stack === STACKS.OTHER && a.stack !== STACKS.OTHER) return -1
+
       const dateA = new Date(a.createdAt)
       const dateB = new Date(b.createdAt)
       return dateB.getTime() - dateA.getTime()

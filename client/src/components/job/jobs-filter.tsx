@@ -1,6 +1,7 @@
 import { getAllStacks } from '@/functions/functions'
 import { Job, Stack } from '@/types/types'
 import { IconSwitcher } from '../icons/IconSwitcher'
+import { STACKS } from '@/constants/constants'
 
 type JobsFilterProps = {
   jobs: Job[] | null
@@ -30,7 +31,7 @@ const JobsFilter = ({
         Todos
       </button>
       {getAllStacks(jobs)
-        .filter((stack) => stack !== 'otro')
+        .filter((stack) => stack !== STACKS.OTHER)
         .sort()
         .map((stack, index) => (
           <button

@@ -48,7 +48,7 @@ const JobsSection = ({
   if (loading) {
     return (
       <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-screen m-auto justify-center items-center bg-white z-10 px-4">
-        <Logo customClass="text-primary w-48 h-auto" />
+        <Logo customClass="text-primary w-48 md:w-64 h-auto" />
         <p className="text-xl font-bold text-center max-w-[600px]">
           El sector IT en España es como un gran código en constante evolución.
           ¡Estás a un commit de ser parte de él!
@@ -59,7 +59,7 @@ const JobsSection = ({
 
   return (
     <section className="w-full">
-      <h1 className="self-start text-left font-bold text-3xl md:text-5xl max-w-[900px] mb-12">
+      <h1 className="self-start text-left font-bold text-3xl md:text-4xl max-w-[900px] mb-12">
         {title ||
           `Últimas ofertas de trabajo tecnológicas a ${getTodayInSpanishFormat()}`}
       </h1>

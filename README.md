@@ -16,7 +16,7 @@ Una nueva forma de descubrir Infojobs para desarrolladores
 
 Sabemos que cuando uno busca trabajo se las tiene que ver con activar multitud de filtros para al final encontrar lo que estamos buscando. **Para el sector IT en particular, resultaba algo difícil atinar**, ya que **no existía la opción de filtrar por especialidad**.
 
-Con InfoJobs Tech **hemos añadido ese filtro avanzado extendiendo la API de InfoJobs haciendo uso de Inteligencia Artifical**. Ahora, con esta nueva categorización, podemos filtrar con un simple click por `frontend`, `backend`, `fullstack`, `data`, `devops` y `mobile`.
+Con InfoJobs Tech **hemos añadido ese filtro avanzado extendiendo la API de InfoJobs haciendo uso de Inteligencia Artifical**. Ahora, con esta nueva categorización, podemos filtrar con un simple click por `frontend`, `backend`, `fullstack`, `data`, `devops`, `mobile` y `otro` (el caso para montones de puestos que son del sector informático pero que no dependen de un stack en concreto).
 
 Además, **hemos querido traer datos reales en cuanto a cómo está el mercado en la actualidad**, para que el usuario se haga una idea de en cuánto está la media de salario de su especialidad. Todo utilizando los datos de la [API de InfoJobs](https://developer.infojobs.net/).
 

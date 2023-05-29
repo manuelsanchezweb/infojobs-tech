@@ -11,6 +11,7 @@ import {
 } from '@/functions/utils'
 import { getJobsData } from '@/api/getJobsData'
 import { ConnectionError } from '@/functions/errors'
+import { STACKS } from '@/constants/constants'
 
 const JobsSalarySection = ({ title }: { title?: string }) => {
   const [jobs, setJobs] = useState<Job[]>([])
@@ -35,7 +36,7 @@ const JobsSalarySection = ({ title }: { title?: string }) => {
     .map(([stack, avgSalary]) => {
       return { stack, avgSalary }
     })
-    .filter((item) => item.stack !== 'otro')
+    .filter((item) => item.stack !== STACKS.OTHER)
 
   const getColorByIndex = (index: number) => {
     const colors = ['slate', 'violet', 'indigo', 'rose', 'cyan', 'amber']

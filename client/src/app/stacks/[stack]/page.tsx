@@ -9,18 +9,12 @@ import { ChartMonthTech } from '@/components/tremor/ChartMonthTech'
 import { BarMostPopularSkills } from '@/components/tremor/BarMostPopularSkills'
 import { ConnectionError } from '@/functions/errors'
 import BackButton from '@/components/back-button/back-button'
+import { STACKS } from '@/constants/constants'
 
-const validStacks: Stack[] = [
-  'frontend',
-  'backend',
-  'fullstack',
-  'mobile',
-  'devops',
-  'data',
-  'otro',
-]
+const validStacks: Set<Stack> = new Set(Object.values(STACKS))
+
 const isStackValid = (stack: string): stack is Stack => {
-  return validStacks.includes(stack as Stack)
+  return validStacks.has(stack as Stack)
 }
 
 async function getStackData(stack: Stack) {
@@ -51,7 +45,7 @@ export default async function Page({ params }: { params: { stack: Stack } }) {
 
   return (
     <main className="flex flex-col gap-12 pb-16">
-      <HeroGeneral icon={params.stack} />
+      <HeroGeneral iconStack={params.stack} />
 
       <div className="container-wrapper">
         <BackButton classCustom="w-fit my-6" />
@@ -65,61 +59,63 @@ export default async function Page({ params }: { params: { stack: Stack } }) {
           numberOfJobsPerPage={9}
         />
 
-        <BarMostPopularSkills
-          title={`25 Skills más demandadas en ${params.stack}`}
-          skills={skills}
-        />
+        <div className="my-12">
+          <BarMostPopularSkills
+            title={`25 Skills más demandadas en ${params.stack}`}
+            skills={skills}
+          />
 
-        <ChartMonthTech
-          title="Tecnologías con más ofertas de trabajo"
-          data={[
-            {
-              date: 'Enero 23',
-              Python: 3892,
-              React: 2318,
-              JavaScript: 1756,
-              Qwik: 1203,
-              PHP: 603,
-              Dart: 5000,
-            },
-            {
-              date: 'Febrero 23',
-              Python: 3789,
-              React: 2810,
-              JavaScript: 1789,
-              Qwik: 2019,
-              PHP: 1603,
-              Dart: 5000,
-            },
-            {
-              date: 'Marzo 23',
-              Python: 3922,
-              React: 1256,
-              JavaScript: 1989,
-              Qwik: 1876,
-              PHP: 403,
-              Dart: 3000,
-            },
-            {
-              date: 'Abril 23',
-              Python: 4000,
-              React: 2156,
-              JavaScript: 1210,
-              Qwik: 2609,
-              PHP: 2603,
-              Dart: 5000,
-            },
-            {
-              date: 'Mayo 23',
-              Python: 3967,
-              React: 2378,
-              JavaScript: 356,
-              Qwik: 3500,
-              PHP: 4603,
-              Dart: 5000,
-            },
-          ]}
-        />
+          <ChartMonthTech
+            title="Tecnologías con más ofertas de trabajo"
+            data={[
+              {
+                date: 'Enero 23',
+                Python: 3892,
+                React: 2318,
+                JavaScript: 1756,
+                Qwik: 1203,
+                PHP: 603,
+                Dart: 5000,
+              },
+              {
+                date: 'Febrero 23',
+                Python: 3789,
+                React: 2810,
+                JavaScript: 1789,
+                Qwik: 2019,
+                PHP: 1603,
+                Dart: 5000,
+              },
+              {
+                date: 'Marzo 23',
+                Python: 3922,
+                React: 1256,
+                JavaScript: 1989,
+                Qwik: 1876,
+                PHP: 403,
+                Dart: 3000,
+              },
+              {
+                date: 'Abril 23',
+                Python: 4000,
+                React: 2156,
+                JavaScript: 1210,
+                Qwik: 2609,
+                PHP: 2603,
+                Dart: 5000,
+              },
+              {
+                date: 'Mayo 23',
+                Python: 3967,
+                React: 2378,
+                JavaScript: 356,
+                Qwik: 3500,
+                PHP: 4603,
+                Dart: 5000,
+              },
+            ]}
+          />
+        </div>
       </div>
     </main>
   )

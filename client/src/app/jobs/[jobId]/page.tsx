@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
   return (
     <>
       <main className="flex flex-col items-center justify-center gap-12 pb-16">
-        <HeroGeneral icon={job?.stack} />
+        <HeroGeneral iconStack={job?.stack} />
         <div className="container-wrapper">
           <BackButton classCustom="w-fit my-6" />
 
@@ -63,9 +63,6 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                 <strong>Empresa:</strong> {job.profile.name}
               </p>
             )}
-            <small>
-              Id: <i>{job.id}</i>
-            </small>
           </div>
 
           <h2 className="text-2xl font-bold border-b border-primaryDark mb-8">
@@ -92,7 +89,7 @@ export default async function Page({ params }: { params: { jobId: string } }) {
                   <div className="flex flex-wrap gap-2">
                     {job?.skillsList.map((skill) => (
                       <span
-                        className="flex bg-gray-200 rounded-full border px-3 py-1 text-[8px] flex-nowrap font-semibold text-gray-700"
+                        className="flex bg-gray-200 rounded-full border px-3 py-1 text-[12px] flex-nowrap font-semibold text-gray-700"
                         key={skill.skill}
                       >
                         {skill.skill}

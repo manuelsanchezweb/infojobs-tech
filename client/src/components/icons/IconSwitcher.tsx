@@ -57,7 +57,7 @@ export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
         return <IconLinkedin classCustom={classCustom} />
 
       default:
-        return <IconFullStack classCustom={classCustom} />
+        return <IconWeb classCustom={classCustom} />
     }
   }
 

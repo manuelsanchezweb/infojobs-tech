@@ -13,6 +13,11 @@ export default function Home() {
         <HeroGeneral />
 
         <div className="container-wrapper">
+          <div className="self-start text-left font-bold text-4xl md:text-5xl max-w-[900px] mb-12">
+            La nueva plataforma inteligente{' '}
+            <span className="text-primary">por y para desarrolladores</span>{' '}
+            guiada por IA
+          </div>
           <JobsSection
             showFilters
             title={`Últimas ofertas a ${getTodayInSpanishFormat()}`}
