@@ -96,6 +96,7 @@ const JobsSection = ({
           />
         </div>
 
+        {/* Filter by techs
         <div className="flex flex-col my-2 w-full">
           <label htmlFor="technology">
             con la(s) siguiente(s) tecnología(s):{' '}
@@ -109,7 +110,7 @@ const JobsSection = ({
             defaultValue={selectedTechnology}
             onChange={(e) => setTechnology(e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
       <JobsList
         numberOfJobsPerPage={numberOfJobsPerPage}
