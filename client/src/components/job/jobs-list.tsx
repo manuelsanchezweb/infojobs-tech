@@ -42,15 +42,16 @@ export const JobsList = ({
     filteredJobs.length === 0
 
   useEffect(() => {
+    if (initialState.currentPage !== 1) actions.jumpToPage(1)
     const li = document.querySelectorAll('.job-card')
     if (!li[0]) return
-    actions.jumpToPage(1)
 
     animate(
       li,
       { opacity: [0, 1], scale: [0, 1] },
       { delay: stagger(0.1), easing: 'ease-in-out' }
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedStack, jobs])
 
   const displayedJobsPaginated = useMemo(() => {

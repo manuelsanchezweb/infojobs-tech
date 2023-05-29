@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://infojobs-tech.vercel.app/'),
   title: 'Infojobs Tech',
   description:
     'Descubre una nueva forma de encontrar trabajo para los amantes de la tecnología',
