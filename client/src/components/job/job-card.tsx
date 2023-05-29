@@ -37,7 +37,7 @@ export const JobCard = ({ job }: { job: Job }) => {
       <div className="flex flex-col pt-4 gap-4 w-full mt-auto">
         {job.skills && (
           <div className="flex flex-wrap items-center gap-2 max-w-[450px]">
-            {job.skills.slice(0, 3).map((technology: Technology | string) => (
+            {job.skills.slice(0, 4).map((technology: Technology | string) => (
               <span
                 key={technology}
                 className="flex bg-gray-200 rounded-full border px-3 py-1 text-[12px] flex-nowrap font-semibold text-gray-700"

@@ -27,6 +27,9 @@ const JobsSection = ({
   const [location, setLocation] = useState<string>('')
   const selectedLocation = useDebounce(location, 400)
 
+  const [technology, setTechnology] = useState<string>('')
+  const selectedTechnology = useDebounce(technology, 400)
+
   const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -79,23 +82,41 @@ const JobsSection = ({
           jobs={jobs}
         />
       )}
-      <div className="flex flex-col my-6">
-        <label htmlFor="location">Busco en: </label>
-        <input
-          className="border border-black rounded-md w-[200px] p-4 my-2"
-          id="location"
-          name="location"
-          type="text"
-          placeholder="Toda España"
-          defaultValue={selectedLocation}
-          onChange={(e) => setLocation(e.target.value)}
-        />
+      <div className="flex flex-col md:flex-row gap-1 md:gap-4 my-6">
+        <div className="flex flex-col my-2">
+          <label htmlFor="location">Busco en </label>
+          <input
+            className="border border-black rounded-md w-[200px] p-4 my-2"
+            id="location"
+            name="location"
+            type="text"
+            placeholder="Toda España"
+            defaultValue={selectedLocation}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col my-2 w-full">
+          <label htmlFor="technology">
+            con la(s) siguiente(s) tecnología(s):{' '}
+          </label>
+          <input
+            className="border border-black rounded-md w-full max-w-[500px] p-4 my-2"
+            id="technology"
+            name="technology"
+            type="text"
+            placeholder="Prueba a separarlas con comas (React, JavaScript, Node)."
+            defaultValue={selectedTechnology}
+            onChange={(e) => setTechnology(e.target.value)}
+          />
+        </div>
       </div>
       <JobsList
         numberOfJobsPerPage={numberOfJobsPerPage}
         jobs={jobs}
         selectedStack={selectedStack}
         selectedLocation={selectedLocation}
+        selectedTechnology={selectedTechnology}
       />
     </section>
   )

@@ -2,7 +2,11 @@ import { Job, Stack } from '@/types/types'
 import React, { useEffect, useMemo } from 'react'
 import { JobCard } from './job-card'
 import usePagination from '@/hooks/usePagination'
-import { filterJobsByCity, filterJobsByStack } from '@/functions/functions'
+import {
+  filterJobsByCity,
+  filterJobsByStack,
+  filterJobsByTechnology,
+} from '@/functions/functions'
 import { animate, stagger } from 'motion'
 import { STACKS } from '@/constants/constants'
 
@@ -10,6 +14,7 @@ type JobsListProps = {
   jobs: Job[]
   selectedStack: Stack | null
   selectedLocation: string
+  selectedTechnology: string
   numberOfJobsPerPage?: number
 }
 
@@ -18,6 +23,7 @@ export const JobsList = ({
   selectedStack,
   numberOfJobsPerPage,
   selectedLocation,
+  selectedTechnology,
 }: JobsListProps) => {
   const filteredJobs = useMemo(() => {
     let filtered = jobs
@@ -30,6 +36,10 @@ export const JobsList = ({
       filtered = filterJobsByStack(filtered, selectedStack)
     }
 
+    if (selectedTechnology.length > 0) {
+      filtered = filterJobsByTechnology(filtered, selectedTechnology)
+    }
+
     filtered = [...filtered].sort((a, b) => {
       if (a.stack === STACKS.OTHER && b.stack !== STACKS.OTHER) return 1
       if (b.stack === STACKS.OTHER && a.stack !== STACKS.OTHER) return -1
@@ -40,7 +50,7 @@ export const JobsList = ({
     })
 
     return filtered
-  }, [jobs, selectedStack, selectedLocation])
+  }, [jobs, selectedStack, selectedLocation, selectedTechnology])
 
   const initialState = {
     currentPage: 1,
@@ -65,7 +75,7 @@ export const JobsList = ({
       { delay: stagger(0.1), easing: 'ease-in-out' }
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedStack, jobs])
+  }, [selectedStack, jobs, selectedLocation, selectedTechnology])
 
   const displayedJobsPaginated = useMemo(() => {
     const start = (state.currentPage - 1) * state.pageSize
