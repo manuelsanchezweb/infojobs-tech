@@ -1,13 +1,20 @@
 import Footer from '@/components/footer/footer'
 import './globals.css'
-import { Inter } from 'next/font/google'
+import type { Metadata } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Infojobs Tech',
   description:
     'Descubre una nueva forma de encontrar trabajo para los amantes de la tecnología',
+  keywords: [
+    'portal empleo',
+    'trabajo',
+    'tecnología',
+    'desarrollo',
+    'programación',
+    'data science',
+    'análisis datos',
+  ],
 }
 
 export default function RootLayout({
@@ -17,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body>
         {children}
         <Footer />
       </body>

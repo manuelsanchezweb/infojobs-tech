@@ -24,7 +24,7 @@ export const BarMostPopularSkills = ({
   skills,
   title = 'Título de la gráfica por defecto',
 }: {
-  skills: any
+  skills: { [key: string]: number }
   title?: string
 }) => {
   const data: SkillsEntry[] = transformDictionary(skills)

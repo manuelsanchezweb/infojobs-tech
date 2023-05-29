@@ -8,7 +8,8 @@ export type Stack =
   | 'otro'
 
 export type Technology = 'react' | 'vue' | 'qwik' | 'angular' | 'svelte'
-export type Illustrations = 'error'
+export type Illustrations = 'error' | 'evaluation'
+export type Social = 'web' | 'linkedin' | 'message'
 
 export type Job = {
   id: number

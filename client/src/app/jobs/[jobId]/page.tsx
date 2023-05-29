@@ -1,9 +1,22 @@
 import { getJobById } from '@/api/getJobById'
+import type { Metadata } from 'next'
 import NotFound from '@/app/not-found'
 import BackButton from '@/components/back-button/back-button'
 import HeroGeneral from '@/components/hero/hero-general'
 import { ConnectionError } from '@/functions/errors'
 import { convertDateToStandardFormat } from '@/functions/utils'
+
+export function generateMetadata({
+  params,
+}: {
+  params: { id: string }
+}): Metadata {
+  return {
+    title: `Oferta para el id ${params.id}`,
+    description: 'Encuentra tu nuevo trabajo de forma fácil con InfoJobs Tech',
+    keywords: [`${params.id}`, 'infojobs tech'],
+  }
+}
 
 async function getJobData(id: string) {
   try {

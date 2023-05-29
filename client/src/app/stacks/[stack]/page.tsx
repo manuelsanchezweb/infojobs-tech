@@ -1,7 +1,6 @@
 import { getSkillsByStack } from '@/api/getSkillsByStack'
-import NotFound from '@/app/not-found'
 import { notFound } from 'next/navigation'
-
+import type { Metadata } from 'next'
 import HeroGeneral from '@/components/hero/hero-general'
 import JobsSection from '@/components/job/jobs-section'
 import { getTodayInSpanishFormat } from '@/functions/utils'
@@ -24,7 +23,7 @@ const isStackValid = (stack: string): stack is Stack => {
   return validStacks.includes(stack as Stack)
 }
 
-async function getStackData(stack: any) {
+async function getStackData(stack: Stack) {
   if (!isStackValid(stack)) return notFound()
 
   try {
@@ -35,7 +34,19 @@ async function getStackData(stack: any) {
   }
 }
 
-export default async function Page({ params }: { params: { stack: any } }) {
+export function generateMetadata({
+  params,
+}: {
+  params: { stack: Stack }
+}): Metadata {
+  return {
+    title: `Ofertas de ${params.stack}`,
+    description: `Descubre aquí lo fácil que es encontrar un nuevo empleo en el mundo ${params.stack}`,
+    keywords: [`${params.stack}`, `desarrollo ${params.stack}`],
+  }
+}
+
+export default async function Page({ params }: { params: { stack: Stack } }) {
   const skills = await getStackData(params.stack)
 
   return (

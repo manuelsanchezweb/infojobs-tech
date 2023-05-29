@@ -1,8 +1,22 @@
 import BackButton from '@/components/back-button/back-button'
 import HeroGeneral from '@/components/hero/hero-general'
 import { IconSwitcher } from '@/components/icons/IconSwitcher'
-import InteractiveElement from '@/components/interactive-element/interactive-element'
 import Image from 'next/image'
+
+export function generateMetadata() {
+  return {
+    title: 'Sobre Nosotros y Visión',
+    description:
+      'Aquí descubrirás quiénese son los que hicieron realidad este proyecto en una Hackathon',
+    keywords: [
+      'contacto',
+      'sobre nosotros',
+      'infojobs tech',
+      'xavier lopez',
+      'manuel sanchez',
+    ],
+  }
+}
 
 export default function Home() {
   return (
@@ -18,7 +32,7 @@ export default function Home() {
           </h1>
 
           <div className="flex flex-col md:flex-row-reverse gap-12 my-8 text-justify">
-            <div className="flex flex-col gap-4 text-lg">
+            <div className="flex flex-col gap-4 text-lg max-w-[600px]">
               <p>
                 <strong>InfoJobs Tech</strong> es la propuesta de valor para
                 InfoJobs de 2 desarrolladores españoles.
@@ -37,7 +51,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col md:flex-row gap-12 my-8 text-justify">
-            <div className="flex flex-col gap-4 text-lg">
+            <div className="flex flex-col gap-4 text-lg max-w-[600px]">
               <p>
                 Las ofertas hablan su idioma:{' '}
                 <strong>
@@ -96,7 +110,12 @@ export default function Home() {
             </div>
             <div className="flex flex-col sm:flex-row gap-6 my-4">
               <div className="flex flex-col items-center text-center">
-                <a href="https://github.com/xavierlopez" className="group">
+                <a
+                  rel="nofollow noreferrer"
+                  target="_blank"
+                  href="https://github.com/xavierlopez"
+                  className="group"
+                >
                   <figure className="flex flex-col gap-2 overflow-hidden">
                     <picture className="overflow-hidden rounded-md border border-primary">
                       <Image
@@ -114,6 +133,8 @@ export default function Home() {
                 </a>
                 <div className="flex gap-2 my-4">
                   <a
+                    rel="nofollow noreferrer"
+                    target="_blank"
                     className="hover:scale-105 focus:scale-105 transition-transform"
                     title="Ver GitHub de Xavier"
                     href="https://github.com/xavierlopez"
@@ -121,6 +142,8 @@ export default function Home() {
                     <IconSwitcher classCustom="w-8 h-auto" icon="web" />
                   </a>
                   <a
+                    rel="nofollow noreferrer"
+                    target="_blank"
                     className="hover:scale-105 focus:scale-105 transition-transform"
                     title="Ver LinkedIn de Xavier"
                     href="https://www.linkedin.com/in/lopezmorras/"
@@ -137,7 +160,12 @@ export default function Home() {
                 </div>
               </div>
               <div className="flex flex-col items-center text-center">
-                <a href="https://github.com/manuelsanchez2" className="group">
+                <a
+                  rel="nofollow noreferrer"
+                  target="_blank"
+                  href="https://github.com/manuelsanchez2"
+                  className="group"
+                >
                   <figure className="flex flex-col gap-2 overflow-hidden">
                     <picture className="overflow-hidden rounded-md border border-primary">
                       <Image
@@ -155,6 +183,8 @@ export default function Home() {
                 </a>
                 <div className="flex gap-2 my-4">
                   <a
+                    rel="nofollow noreferrer"
+                    target="_blank"
                     className="hover:scale-105 focus:scale-105 transition-transform"
                     title="Ver GitHub de Manuel"
                     href="https://github.com/manuelsanchez2"
@@ -162,6 +192,8 @@ export default function Home() {
                     <IconSwitcher classCustom="w-8 h-auto" icon="web" />
                   </a>
                   <a
+                    rel="nofollow noreferrer"
+                    target="_blank"
                     className="hover:scale-105 focus:scale-105 transition-transform"
                     title="Ver LinkedIn de Manuel"
                     href="https://www.linkedin.com/in/manusanchez2/"

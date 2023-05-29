@@ -5,15 +5,17 @@ import usePagination from '@/hooks/usePagination'
 import { filterJobsByStack } from '@/functions/functions'
 import { animate, stagger } from 'motion'
 
+type JobsListProps = {
+  jobs: Job[]
+  selectedStack: Stack | null
+  numberOfJobsPerPage?: number
+}
+
 export const JobsList = ({
   jobs,
   selectedStack,
   numberOfJobsPerPage,
-}: {
-  jobs: Job[]
-  selectedStack: Stack | null
-  numberOfJobsPerPage?: number
-}) => {
+}: JobsListProps) => {
   const filteredJobs = useMemo(() => {
     let filtered =
       selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)

@@ -1,8 +1,10 @@
 import HeroGeneral from '@/components/hero/hero-general'
+import { IconSwitcher } from '@/components/icons/IconSwitcher'
 import InteractiveElement from '@/components/interactive-element/interactive-element'
 import JobsSalarySection from '@/components/job/jobs-salary-section'
 import JobsSection from '@/components/job/jobs-section'
 import { getTodayInSpanishFormat } from '@/functions/utils'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -18,7 +20,7 @@ export default function Home() {
 
           <InteractiveElement
             data={{
-              headline: '¿Qué stack te interesa más?',
+              headline: '¿Qué stack buscas?',
               options: [
                 {
                   id: 1,
@@ -103,6 +105,21 @@ export default function Home() {
           />
 
           <JobsSalarySection />
+
+          <div className="flex flex-col md:flex-row md:justify-between items-center gap-12 my-16 text-justify bg-accentTransparent text-white rounded-md p-5">
+            <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 text-lg max-w-[400px] lg:max-w-[600px]">
+              <p>
+                <strong>InfoJobs Tech</strong> ha desbloqueado tan solo la punta
+                del iceberg en cuanto a su potencial se refiere. Si quieres ver
+                qué más hemos pensado para el proyecto, échale un vistazo a
+                nuestra visión.
+              </p>
+              <Link className="btn w-fit" href="/sobre-nosotros">
+                Ver visión del proyecto
+              </Link>
+            </div>
+            <IconSwitcher icon="evaluation" />
+          </div>
         </div>
       </main>
     </>

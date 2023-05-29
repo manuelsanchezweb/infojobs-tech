@@ -1,4 +1,4 @@
-import { Illustrations, Stack, Technology } from '@/types/types'
+import { Illustrations, Social, Stack, Technology } from '@/types/types'
 import {
   IconAngular,
   IconBackend,
@@ -14,15 +14,16 @@ import {
   IconVue,
   IconWeb,
 } from './Icons'
-import { IllustrationError } from './illustrations'
+import { IllustrationError, IllustrationEvaluation } from './illustrations'
 
 type IconSwitcherProps = {
-  icon: Technology | Stack | Illustrations | string
+  icon: Technology | Stack | Illustrations | Social
+
   classCustom?: string
 }
 
 export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
-  function renderIcon(icon: Technology | Stack | Illustrations | string) {
+  function renderIcon(icon: Technology | Stack | Illustrations | Social) {
     switch (icon) {
       case 'react':
         return <IconReact classCustom={classCustom} />
@@ -34,6 +35,8 @@ export const IconSwitcher = ({ icon, classCustom }: IconSwitcherProps) => {
         return <IconAngular classCustom={classCustom} />
       case 'error':
         return <IllustrationError classCustom={classCustom} />
+      case 'evaluation':
+        return <IllustrationEvaluation classCustom={classCustom} />
       case 'frontend':
         return <IconFrontend classCustom={classCustom} />
       case 'backend':

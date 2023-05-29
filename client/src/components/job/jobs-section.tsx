@@ -47,7 +47,7 @@ const JobsSection = ({
 
   if (loading) {
     return (
-      <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-full m-auto justify-center items-center bg-white z-10 px-4">
+      <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-screen m-auto justify-center items-center bg-white z-10 px-4">
         <Logo customClass="text-primary w-48 h-auto" />
         <p className="text-xl font-bold text-center max-w-[600px]">
           El sector IT en España es como un gran código en constante evolución.
