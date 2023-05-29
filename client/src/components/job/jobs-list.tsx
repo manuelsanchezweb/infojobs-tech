@@ -2,13 +2,14 @@ import { Job, Stack } from '@/types/types'
 import React, { useEffect, useMemo } from 'react'
 import { JobCard } from './job-card'
 import usePagination from '@/hooks/usePagination'
-import { filterJobsByStack } from '@/functions/functions'
+import { filterJobsByCity, filterJobsByStack } from '@/functions/functions'
 import { animate, stagger } from 'motion'
 import { STACKS } from '@/constants/constants'
 
 type JobsListProps = {
   jobs: Job[]
   selectedStack: Stack | null
+  selectedLocation: string
   numberOfJobsPerPage?: number
 }
 
@@ -16,10 +17,18 @@ export const JobsList = ({
   jobs,
   selectedStack,
   numberOfJobsPerPage,
+  selectedLocation,
 }: JobsListProps) => {
   const filteredJobs = useMemo(() => {
-    let filtered =
-      selectedStack === null ? jobs : filterJobsByStack(jobs, selectedStack)
+    let filtered = jobs
+
+    if (selectedLocation && selectedLocation.length > 0) {
+      filtered = filterJobsByCity(filtered, selectedLocation)
+    }
+
+    if (selectedStack !== null) {
+      filtered = filterJobsByStack(filtered, selectedStack)
+    }
 
     filtered = [...filtered].sort((a, b) => {
       if (a.stack === STACKS.OTHER && b.stack !== STACKS.OTHER) return 1
@@ -31,7 +40,7 @@ export const JobsList = ({
     })
 
     return filtered
-  }, [jobs, selectedStack])
+  }, [jobs, selectedStack, selectedLocation])
 
   const initialState = {
     currentPage: 1,

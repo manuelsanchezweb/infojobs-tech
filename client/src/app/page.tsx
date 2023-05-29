@@ -19,7 +19,7 @@ export default function Home() {
             guiada por IA
           </div>
           <JobsSection
-            showFilters
+            showStackFilters
             title={`Últimas ofertas a ${getTodayInSpanishFormat()}`}
           />
 

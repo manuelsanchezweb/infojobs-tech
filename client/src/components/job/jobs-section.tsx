@@ -7,15 +7,16 @@ import { JobsList } from './jobs-list'
 import { getTodayInSpanishFormat } from '@/functions/utils'
 import { Logo } from '../logo'
 import { getJobsData } from '@/api/getJobsData'
-import { ConnectionError } from '@/functions/errors'
+import { notFound } from 'next/navigation'
+import { useDebounce } from '@/hooks/useDebounce'
 
 const JobsSection = ({
-  showFilters,
+  showStackFilters,
   stack,
   title,
   numberOfJobsPerPage,
 }: {
-  showFilters?: boolean
+  showStackFilters?: boolean
   stack?: Stack
   title?: string
   numberOfJobsPerPage?: number
@@ -23,8 +24,12 @@ const JobsSection = ({
   const [selectedStack, setSelectedStack] = useState<Stack | null>(
     stack || null
   )
+  const [location, setLocation] = useState<string>('')
+  const selectedLocation = useDebounce(location, 400)
+
   const [jobs, setJobs] = useState<Job[]>([])
   const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     document.body.classList.add('overflow-hidden')
@@ -34,15 +39,15 @@ const JobsSection = ({
         setJobs(jobsData || [])
         setLoading(false)
       } catch (error) {
-        throw new ConnectionError(
-          'There was an issue with the fetch of the jobs'
-        )
+        setError('There was an issue with the fetch of the jobs')
+      } finally {
+        document.body.classList.remove('overflow-hidden')
       }
-
-      document.body.classList.remove('overflow-hidden')
     }
 
     fetchData()
+
+    return () => document.body.classList.remove('overflow-hidden')
   }, [])
 
   if (loading) {
@@ -57,23 +62,40 @@ const JobsSection = ({
     )
   }
 
+  if (error) {
+    notFound()
+  }
+
   return (
     <section className="w-full">
-      <h1 className="self-start text-left font-bold text-3xl md:text-4xl max-w-[900px] mb-12">
+      <h1 className="self-start text-left font-bold text-3xl md:text-4xl max-w-[900px] mb-6">
         {title ||
           `Últimas ofertas de trabajo tecnológicas a ${getTodayInSpanishFormat()}`}
       </h1>
-      {showFilters && (
+      {showStackFilters && (
         <JobsFilter
           setSelectedStack={setSelectedStack}
           selectedStack={selectedStack}
           jobs={jobs}
         />
       )}
+      <div className="flex flex-col my-6">
+        <label htmlFor="location">Busco en: </label>
+        <input
+          className="border border-black rounded-md w-[200px] p-4 my-2"
+          id="location"
+          name="location"
+          type="text"
+          placeholder="Toda España"
+          defaultValue={selectedLocation}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+      </div>
       <JobsList
         numberOfJobsPerPage={numberOfJobsPerPage}
         jobs={jobs}
         selectedStack={selectedStack}
+        selectedLocation={selectedLocation}
       />
     </section>
   )

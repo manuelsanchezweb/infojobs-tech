@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: { stack: Stack } }) {
           title={`Últimas ofertas ${
             params.stack
           } a ${getTodayInSpanishFormat()}`}
-          showFilters={false}
+          showStackFilters={false}
           stack={params.stack}
           numberOfJobsPerPage={9}
         />

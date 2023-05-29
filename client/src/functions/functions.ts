@@ -10,6 +10,19 @@ export function filterJobsByStack(jobs: Job[], stack: Stack) {
   return jobs.filter((job) => job.stack === stack)
 }
 
+function removeAccents(str: string) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+}
+
+export function filterJobsByCity(jobs: Job[], city: string) {
+  const lowerCaseCity = removeAccents(city.toLowerCase())
+  return jobs.filter(
+    (job) =>
+      removeAccents(job.city.toLowerCase()) === lowerCaseCity ||
+      removeAccents(job.city.toLowerCase()).startsWith(lowerCaseCity)
+  )
+}
+
 /**
  *
  * @param input Date in ISO format

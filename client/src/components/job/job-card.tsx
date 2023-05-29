@@ -6,7 +6,7 @@ import { IconSwitcher } from '../icons/IconSwitcher'
 
 export const JobCard = ({ job }: { job: Job }) => {
   return (
-    <li className="job-card flex flex-col items-start justify-start gap-2 border border-primaryDark p-5 rounded-sm md:min-h-[310px] relative">
+    <li className="job-card flex flex-col items-start justify-start gap-2 border border-primaryDark p-5 rounded-md md:min-h-[310px] relative">
       <h2
         className="font-bold text-md max-w-[210px] line-clamp-2"
         title={job.title}
