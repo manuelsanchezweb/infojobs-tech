@@ -9,6 +9,7 @@ import { Logo } from '../logo'
 import { getJobsData } from '@/api/getJobsData'
 import { notFound } from 'next/navigation'
 import { useDebounce } from '@/hooks/useDebounce'
+import LoadingScreen from '../loading-screen/loading-screen'
 
 const JobsSection = ({
   showStackFilters,
@@ -53,17 +54,7 @@ const JobsSection = ({
     return () => document.body.classList.remove('overflow-hidden')
   }, [])
 
-  if (loading) {
-    return (
-      <div className="h-screen flex flex-col gap-8 fixed top-0 left-0 overflow-hidden overflow-y-hidden w-screen m-auto justify-center items-center bg-white z-10 px-4">
-        <Logo customClass="text-primary w-48 md:w-64 h-auto" />
-        <p className="text-xl font-bold text-center max-w-[600px]">
-          El sector IT en España es como un gran código en constante evolución.
-          ¡Estás a un commit de ser parte de él!
-        </p>
-      </div>
-    )
-  }
+  if (loading) return <LoadingScreen />
 
   if (error) {
     notFound()
@@ -95,8 +86,7 @@ const JobsSection = ({
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
-
-        {/* Filter by techs
+        {/* Filter by techs */}
         <div className="flex flex-col my-2 w-full">
           <label htmlFor="technology">
             con la(s) siguiente(s) tecnología(s):{' '}
@@ -110,7 +100,7 @@ const JobsSection = ({
             defaultValue={selectedTechnology}
             onChange={(e) => setTechnology(e.target.value)}
           />
-        </div> */}
+        </div>
       </div>
       <JobsList
         numberOfJobsPerPage={numberOfJobsPerPage}

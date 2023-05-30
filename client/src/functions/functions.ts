@@ -24,10 +24,10 @@ export function filterJobsByCity(jobs: Job[], city: string) {
 }
 
 export function filterJobsByTechnology(jobs: Job[], technology: string) {
-  const technologies = technology.replace(/\s/g, '').split(',')
+  const technologies = technology.toLowerCase().replace(/\s/g, '').split(',')
 
   return jobs.filter((job) =>
-    job.skills.some((skill) => technologies.includes(skill))
+    job.skills.some((skill) => technologies.includes(skill.toLowerCase()))
   )
 }
 

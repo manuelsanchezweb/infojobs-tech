@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <JobsSection
             showStackFilters
-            title={`Últimas ofertas a ${getTodayInSpanishFormat()}`}
+            title={`Últimas ofertas de InfoJobs Tech`}
           />
 
           <InteractiveElement

@@ -54,7 +54,7 @@ export const JobsList = ({
 
   const initialState = {
     currentPage: 1,
-    pageSize: window.innerWidth > 768 ? numberOfJobsPerPage || 6 : 3,
+    pageSize: numberOfJobsPerPage || 6,
     total: filteredJobs.length,
   }
   const [state, actions] = usePagination(initialState)

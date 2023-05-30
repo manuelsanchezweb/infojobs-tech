@@ -51,9 +51,7 @@ export default async function Page({ params }: { params: { stack: Stack } }) {
         <BackButton classCustom="w-fit my-6" />
 
         <JobsSection
-          title={`Últimas ofertas ${
-            params.stack
-          } a ${getTodayInSpanishFormat()}`}
+          title={`Últimas ofertas ${params.stack}`}
           showStackFilters={false}
           stack={params.stack}
           numberOfJobsPerPage={9}
