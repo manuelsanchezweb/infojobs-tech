@@ -12,7 +12,7 @@ export function generateMetadata({
   params: { id: string }
 }): Metadata {
   return {
-    title: `Oferta para el id ${params.id}`,
+    title: `Oferta para de trabajo`,
     description: 'Encuentra tu nuevo trabajo de forma fácil con InfoJobs Tech',
     keywords: [`${params.id}`, 'infojobs tech'],
   }

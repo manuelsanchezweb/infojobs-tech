@@ -19,7 +19,7 @@ const Navigation = () => {
       <nav>
         {/* Desktop Menu  */}
         {isNavOpen && (
-          <ul className="flex flex-col justify-center items-center gap-8 absolute top-0 left-0 bg-primaryLight h-screen w-full z-10 md:flex-row md:static md:bg-transparent md:h-full">
+          <ul className="flex flex-col justify-center items-center gap-8 fixed top-0 left-0 bg-primaryLight h-screen w-full z-10 md:flex-row md:static md:bg-transparent md:h-full">
             <li>
               <Link
                 href="/"
@@ -40,10 +40,10 @@ const Navigation = () => {
                 Sobre nosotros
               </Link>
             </li>
-            <li>
+            <li className="hidden">
               <a
                 className="btn text-xs items-center"
-                href="https://github.com/manuelsanchezweb/infojobs-tech"
+                href="https://github.com/widevs/infojobstech"
               >
                 <IconGithub customClass="w-4" /> Ver repo
               </a>
@@ -71,10 +71,10 @@ const Navigation = () => {
               Sobre nosotros
             </Link>
           </li>
-          <li>
+          <li className="hidden">
             <a
               className="btn text-xs items-center"
-              href="https://github.com/manuelsanchezweb/infojobs-tech"
+              href="https://github.com/widevs/infojobstech"
             >
               <IconGithub customClass="w-4" /> Ver repo
             </a>
@@ -98,7 +98,7 @@ const Navigation = () => {
         {isNavOpen ? (
           <button
             key="close-menu"
-            className="nav-close absolute right-4 top-8 z-20 md:hidden"
+            className="nav-close fixed right-4 top-8 z-20 md:hidden"
             aria-label="Cerrar menú"
             onClick={toggleNav}
           >
