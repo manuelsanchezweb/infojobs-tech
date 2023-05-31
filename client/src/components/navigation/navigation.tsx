@@ -17,7 +17,6 @@ const Navigation = () => {
     <>
       <HeroLogo />
       <nav>
-        {/* Desktop Menu  */}
         {isNavOpen && (
           <ul className="flex flex-col justify-center items-center gap-8 fixed top-0 left-0 bg-primaryLight h-screen w-full z-10 md:flex-row md:static md:bg-transparent md:h-full">
             <li>
@@ -94,7 +93,6 @@ const Navigation = () => {
           ''
         )}
 
-        {/* Close Button  */}
         {isNavOpen ? (
           <button
             key="close-menu"
