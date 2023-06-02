@@ -109,7 +109,7 @@ export default function Home() {
             }}
           />
 
-          <JobsSalarySection />
+          {/* <JobsSalarySection /> */}
 
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-12 my-16 text-justify bg-primaryTransparent text-white rounded-md p-8">
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-4 text-lg max-w-[400px] lg:max-w-[600px]">
